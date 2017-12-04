@@ -56,43 +56,22 @@ namespace CheatCommands {
 
             player.statManaMax2 = MaxMana;
         }
-
+        
         public static int GetBuffType(string name) {
-            string translated = "";
-            return GetBuffType(name, out translated);
-        }
-
-        public static int GetBuffType(string name, out string translated) {
             int type = 0;
-            string translation = "";
 
             for(int i = 0; i < BuffLoader.BuffCount; i++) {
-                translation = Lang.GetBuffName(i);
-
-                if(name.Equals(translation)) {
+                if(name.Equals(Lang.GetBuffName(i))) {
                     type = i;
                     break;
                 }
             }
-
-            if(type != 0) {
-                translated = translation;
-            }
-            else {
-                translated = "";
-            }
-
+            
             return type;
         }
-
+        
         public static int GetItemType(string name) {
-            string translated = "";
-            return GetItemType(name, out translated);
-        }
-
-        public static int GetItemType(string name, out string translated) {
             int type = 0;
-            string translation = "";
 
             for(int i = 0; i < ItemLoader.ItemCount; i++) {
                 if(name.Equals(Lang.GetItemNameValue(i))) {
@@ -101,24 +80,11 @@ namespace CheatCommands {
                 }
             }
 
-            if(type != 0) {
-                translated = translation;
-            }
-            else {
-                translated = "";
-            }
-
             return type;
         }
-
+        
         public static int GetNPCType(string name) {
-            string translated = "";
-            return GetNPCType(name, out translated);
-        }
-
-        public static int GetNPCType(string name, out string translated) {
             int type = 0;
-            string translation = "";
 
             for(int i = 0; i < NPCLoader.NPCCount; i++) {
                 if(name.Equals(Lang.GetNPCNameValue(i))) {
@@ -126,14 +92,7 @@ namespace CheatCommands {
                     break;
                 }
             }
-
-            if(type != 0) {
-                translated = translation;
-            }
-            else {
-                translated = "";
-            }
-
+            
             return type;
         }
 
