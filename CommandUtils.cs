@@ -95,29 +95,7 @@ namespace CheatCommands {
             
             return type;
         }
-
-        public static string GetSeparatedArguments(string[] args, char separator, int startIndex) {
-            int indexAfter = 0;
-            return GetSeparatedArguments(out indexAfter, args, separator, startIndex);
-        }
-
-        public static string GetSeparatedArguments(out int indexAfter, string[] args, char separator,
-            int startIndex) {
-            List<string> separated = new List<string>();
-            int i = 0;
-
-            for(i = startIndex; i < args.Length; i++) {
-                separated.Add(args[i]);
-
-                if(args[i].EndsWith(separator.ToString())) {
-                    break;
-                }
-            }
-
-            indexAfter = i + 1;
-            return string.Join(" ", separated).Trim(separator, ' ');
-        }
-
+        
         public static bool IsValidNPC(int type) {
             return
                 type != NPCID.TargetDummy &&
