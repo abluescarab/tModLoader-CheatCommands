@@ -2,6 +2,11 @@
 
 namespace CheatCommands {
     class CheatCommands : Mod {
+        public static bool GodMode { get; set; }
+        public static bool InfiniteAmmo { get; set; }
+        public static int MaxMana { get; set; }
+        public static bool TimeFrozen { get; set; }
+        
         public const string DISABLED_COMMANDS = "disabledCommands";
 
         public CheatCommands() {

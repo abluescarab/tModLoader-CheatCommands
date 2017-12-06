@@ -10,10 +10,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     public static class CommandUtils {
-        public static bool GodModeEnabled { get; set; } = false;
-        public static bool InfiniteAmmoEnabled { get; set; } = false;
-        public static int MaxMana { get; set; } = 0;
-
         private static List<CheatCommand> commands = new List<CheatCommand>() {
             new KillAll(),
             new KillNPC(),
@@ -27,10 +23,6 @@ namespace CheatCommands {
             new KillMe(),
             new SetLife(),
             new SetMana(),
-            new Dawn(),
-            new Dusk(),
-            new Midnight(),
-            new Noon(),
             new SettleLiquids(),
             new Time()
         };
@@ -50,11 +42,11 @@ namespace CheatCommands {
         }
 
         public static void ChangePlayerMana(Player player) {
-            if(MaxMana >= 400) {
+            if(CheatCommands.MaxMana >= 400) {
                 player.statManaMax = 400;
             }
 
-            player.statManaMax2 = MaxMana;
+            player.statManaMax2 = CheatCommands.MaxMana;
         }
         
         public static int GetBuffType(string name) {

@@ -15,7 +15,7 @@ namespace CheatCommands.Commands.Player {
                 throw new UsageException("Invalid number: " + args[0]);
             }
 
-            CommandUtils.MaxMana = mana;
+            CheatCommands.MaxMana = mana;
             CommandUtils.ChangePlayerMana(caller.Player);
             caller.Player.GetModPlayer<CheatCommandsPlayer>().RefillMana(true);
             caller.Reply("Set mana to " + mana + "!");

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(CommandUtils.GodModeEnabled) {
+            if(CheatCommands.GodMode) {
                 return false;
             }
 
@@ -14,7 +14,7 @@ namespace CheatCommands {
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(CommandUtils.GodModeEnabled) {
+            if(CheatCommands.GodMode) {
                 return false;
             }
 
@@ -22,7 +22,7 @@ namespace CheatCommands {
         }
         
         public override bool CanBeHitByProjectile(Projectile proj) {
-            if(CommandUtils.GodModeEnabled) {
+            if(CheatCommands.GodMode) {
                 return false;
             }
 
@@ -30,7 +30,7 @@ namespace CheatCommands {
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo) {
-            if(CommandUtils.InfiniteAmmoEnabled) {
+            if(CheatCommands.InfiniteAmmo) {
                 return false;
             }
 
@@ -38,13 +38,13 @@ namespace CheatCommands {
         }
 
         public override void OnEnterWorld(Player player) {
-            CommandUtils.MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
+            CheatCommands.MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
         }
 
         public override void PostUpdateMiscEffects() {
             CommandUtils.ChangePlayerMana(player);
 
-            if(CommandUtils.GodModeEnabled) {
+            if(CheatCommands.GodMode) {
                 RemoveDebuffs();
                 RefillMana(false);
             }

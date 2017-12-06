@@ -70,10 +70,6 @@
     <Compile Include="Commands\Player\SetMana.cs" />
     <Compile Include="CommandUtils.cs" />
     <Compile Include="ModConfig.cs" />
-    <Compile Include="Commands\World\Dawn.cs" />
-    <Compile Include="Commands\World\Dusk.cs" />
-    <Compile Include="Commands\World\Midnight.cs" />
-    <Compile Include="Commands\World\Noon.cs" />
     <Compile Include="Commands\World\SettleLiquids.cs" />
     <Compile Include="Commands\World\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
