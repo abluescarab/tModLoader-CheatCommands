@@ -1,28 +1,25 @@
 ﻿# Cheat Commands
 Adds a bunch of cheat commands to single-player games.
 
-## World Commands
-* `/time` - get world time
-* `/dawn` - change world time to dawn
-* `/dusk` - change world time to dusk
-* `/noon` - change world time to noon
-* `/midnight` - change world time to midnight
+## NPC Commands
+* `/killall` - kill all NPCs
+* `/kill` - kill an NPC
+* `/spawn` - spawn an NPC
 
 ## Player Commands
+* `/buff` - add a buff
+* `/debuff` - remove a buff
 * `/coins` - give coins
 * `/give` - give item
 * `/god` - enable/disable god mode
 * `/ammo` - enable/disable infinite ammo
 * `/killme` - kill your character
-* `/buff` - add a buff
-* `/debuff` - remove a buff
 * `/life` - set life
 * `/mana` - set mana
 
-## NPC Commands
-* `/killall` - kill all NPCs
-* `/kill` - kill an NPC
-* `/spawn` - spawn an NPC
+## World Commands
+* `/settle` - settle liquids
+* `/time` - change world time
 
 ## Credits
 * jopojelly for code modified for the `killall` command
