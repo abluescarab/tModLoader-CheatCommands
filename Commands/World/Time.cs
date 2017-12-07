@@ -37,7 +37,7 @@ namespace CheatCommands.Commands.World {
                 bool freezeTime = CheatCommands.TimeFrozen;
                 CheatCommands.TimeFrozen = false;
                 
-                ToTicks(hours, minutes);
+                ChangeTime(hours, minutes);
 
                 if(freezeTime) {
                     CheatCommands.TimeFrozen = true;
@@ -83,7 +83,7 @@ namespace CheatCommands.Commands.World {
             return true;
         }
 
-        private static void ToTicks(double hours, double minutes) {
+        private static void ChangeTime(double hours, double minutes) {
             bool dayTime = false;
             double time = 0.0;
 
