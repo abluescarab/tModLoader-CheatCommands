@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
-    public static class CommandUtils {
+    static class CommandUtils {
         private static List<CheatCommand> commands = new List<CheatCommand>() {
             new KillAll(),
             new KillNPC(),
