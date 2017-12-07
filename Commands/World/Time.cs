@@ -50,7 +50,7 @@ namespace CheatCommands.Commands.World {
 
         private static bool ToTwentyFourHourTime(string timeString, out int hours, out int minutes) {
             Regex twentyFourHour = new Regex(@"^([01]?\d|2[0-3]):([0-5]\d)");
-            Regex twelveHour = new Regex(@"^(1[0-2]|0?\d):([0-5]\d) ([AaPp][Mm])");
+            Regex twelveHour = new Regex(@"^(1[0-2]|0?\d):([0-5]\d) ?([AaPp][Mm])");
 
             Match twentyFourHourMatch = twentyFourHour.Match(timeString);
             Match twelveHourMatch = twelveHour.Match(timeString);
