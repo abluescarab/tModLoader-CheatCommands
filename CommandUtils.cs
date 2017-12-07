@@ -1,35 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CheatCommands.Commands;
-using CheatCommands.Commands.NPCs;
-using CheatCommands.Commands.Player;
-using CheatCommands.Commands.World;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
     static class CommandUtils {
-        private static List<CheatCommand> commands = new List<CheatCommand>() {
-            new KillAll(),
-            new KillNPC(),
-            new SpawnNPC(),
-            new Buff(),
-            new Debuff(),
-            new GiveCoins(),
-            new GiveItem(),
-            new GodMode(),
-            new InfiniteAmmo(),
-            new KillMe(),
-            new SetLife(),
-            new SetMana(),
-            new FreezeTime(),
-            new SetSpawn(),
-            new SettleLiquids(),
-            new Time()
-        };
-
-        public static void LoadCommands(Mod mod, string[] disabled) {
+        public static void LoadCommands(Mod mod, List<CheatCommand> commands, string[] disabled) {
             foreach(string name in disabled) {
                 var command = commands.FirstOrDefault(n => n.Command.Equals(name));
 
