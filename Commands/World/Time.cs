@@ -34,7 +34,14 @@ namespace CheatCommands.Commands.World {
             }
             
             if(succeeded) {
+                bool freezeTime = CheatCommands.TimeFrozen;
+                CheatCommands.TimeFrozen = false;
+                
                 ToTicks(hours, minutes);
+
+                if(freezeTime) {
+                    CheatCommands.TimeFrozen = true;
+                }
             }
             else {
                 throw new UsageException("Invalid time format: " + args[0]);

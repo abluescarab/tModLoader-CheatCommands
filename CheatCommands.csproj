@@ -68,6 +68,8 @@
     <Compile Include="Commands\Player\KillMe.cs" />
     <Compile Include="Commands\Player\SetLife.cs" />
     <Compile Include="Commands\Player\SetMana.cs" />
+    <Compile Include="Commands\World\FreezeTime.cs" />
+    <Compile Include="Commands\World\SetSpawn.cs" />
     <Compile Include="CommandUtils.cs" />
     <Compile Include="ModConfig.cs" />
     <Compile Include="Commands\World\SettleLiquids.cs" />

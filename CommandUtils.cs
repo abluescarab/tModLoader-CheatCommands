@@ -23,13 +23,15 @@ namespace CheatCommands {
             new KillMe(),
             new SetLife(),
             new SetMana(),
+            new FreezeTime(),
+            new SetSpawn(),
             new SettleLiquids(),
             new Time()
         };
 
         public static void LoadCommands(Mod mod, string[] disabled) {
             foreach(string name in disabled) {
-                var command = commands.FirstOrDefault(n => n.CommandName.Equals(name));
+                var command = commands.FirstOrDefault(n => n.Command.Equals(name));
 
                 if(command != null) {
                     commands.Remove(command);
@@ -48,7 +50,7 @@ namespace CheatCommands {
 
             player.statManaMax2 = CheatCommands.MaxMana;
         }
-        
+
         public static int GetBuffType(string name) {
             int type = 0;
 
@@ -58,10 +60,10 @@ namespace CheatCommands {
                     break;
                 }
             }
-            
+
             return type;
         }
-        
+
         public static int GetItemType(string name) {
             int type = 0;
 
@@ -74,7 +76,7 @@ namespace CheatCommands {
 
             return type;
         }
-        
+
         public static int GetNPCType(string name) {
             int type = 0;
 
@@ -84,10 +86,10 @@ namespace CheatCommands {
                     break;
                 }
             }
-            
+
             return type;
         }
-        
+
         public static bool IsValidNPC(int type) {
             return
                 type != NPCID.TargetDummy &&
