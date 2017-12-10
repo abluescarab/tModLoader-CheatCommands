@@ -46,7 +46,7 @@ namespace CheatCommands {
         }
 
         public override void PostUpdateMiscEffects() {
-            CommandUtils.ChangePlayerMana(player);
+            ChangeMana();
 
             if(GodMode) {
                 RemoveDebuffs();
@@ -54,6 +54,14 @@ namespace CheatCommands {
             }
         }
         
+        public void ChangeMana() {
+            if(MaxMana >= 400) {
+                player.statManaMax = 400;
+            }
+
+            player.statManaMax2 = MaxMana;
+        }
+
         public void RefillLife() {
             int maxLife = (player.statLifeMax2 > player.statLifeMax ? player.statLifeMax2 : player.statLifeMax);
 

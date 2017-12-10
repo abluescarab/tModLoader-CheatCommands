@@ -20,17 +20,7 @@ namespace CheatCommands {
                 mod.AddCommand(command.CommandName, command);
             }
         }
-
-        public static void ChangePlayerMana(Player player) {
-            CheatCommandsPlayer modPlayer = player.GetModPlayer<CheatCommandsPlayer>();
-
-            if(modPlayer.MaxMana >= 400) {
-                player.statManaMax = 400;
-            }
-
-            player.statManaMax2 = modPlayer.MaxMana;
-        }
-
+        
         public static int GetBuffType(string name) {
             int type = 0;
 
