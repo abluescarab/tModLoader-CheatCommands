@@ -7,20 +7,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     static class CommandUtils {
-        public static void LoadCommands(Mod mod, List<CheatCommand> commands, string[] disabled) {
-            foreach(string name in disabled) {
-                var command = commands.FirstOrDefault(n => n.Command.Equals(name));
-
-                if(command != null) {
-                    commands.Remove(command);
-                }
-            }
-
-            foreach(var command in commands) {
-                mod.AddCommand(command.CommandName, command);
-            }
-        }
-        
         public static int GetBuffType(string name) {
             int type = 0;
 

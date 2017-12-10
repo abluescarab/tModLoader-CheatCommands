@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using CheatCommands.Commands;
 using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
@@ -56,7 +57,21 @@ namespace CheatCommands {
             config.Add(DISABLED_COMMANDS, new string[] { });
             config.Load();
             
-            CommandUtils.LoadCommands(this, _commands, (string[])config.Get(DISABLED_COMMANDS));
+            LoadCommands(_commands, (string[])config.Get(DISABLED_COMMANDS));
+        }
+
+        private void LoadCommands(List<CheatCommand> commands, string[] disabled) {
+            foreach(string name in disabled) {
+                var command = commands.FirstOrDefault(n => n.Command.Equals(name));
+
+                if(command != null) {
+                    commands.Remove(command);
+                }
+            }
+
+            foreach(var command in commands) {
+                AddCommand(command.CommandName, command);
+            }
         }
 
         public override void PostUpdateInput() {
