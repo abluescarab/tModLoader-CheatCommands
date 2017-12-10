@@ -22,11 +22,13 @@ namespace CheatCommands {
         }
 
         public static void ChangePlayerMana(Player player) {
-            if(CheatCommands.MaxMana >= 400) {
+            CheatCommandsPlayer modPlayer = player.GetModPlayer<CheatCommandsPlayer>();
+
+            if(modPlayer.MaxMana >= 400) {
                 player.statManaMax = 400;
             }
 
-            player.statManaMax2 = CheatCommands.MaxMana;
+            player.statManaMax2 = modPlayer.MaxMana;
         }
 
         public static int GetBuffType(string name) {

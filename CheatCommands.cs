@@ -29,9 +29,6 @@ namespace CheatCommands {
             new Time()
         };
 
-        public static bool GodMode { get; set; }
-        public static bool InfiniteAmmo { get; set; }
-        public static int MaxMana { get; set; }
         public static bool TimeFrozen {
             get { return timeFrozen; }
             set {
@@ -42,7 +39,7 @@ namespace CheatCommands {
                 }
             }
         }
-        
+
         public const string DISABLED_COMMANDS = "disabledCommands";
 
         public CheatCommands() {
@@ -57,7 +54,7 @@ namespace CheatCommands {
             ModConfiguration.ModConfig config = new ModConfiguration.ModConfig("CheatCommands");
             config.Add(DISABLED_COMMANDS, new string[] { });
             config.Load();
-
+            
             CommandUtils.LoadCommands(this, commands, (string[])config.Get(DISABLED_COMMANDS));
         }
 

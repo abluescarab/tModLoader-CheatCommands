@@ -5,8 +5,12 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {
+        public bool GodMode { get; set; }
+        public bool InfiniteAmmo { get; set; }
+        public int MaxMana { get; set; }
+
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(CheatCommands.GodMode) {
+            if(GodMode) {
                 return false;
             }
 
@@ -14,7 +18,7 @@ namespace CheatCommands {
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(CheatCommands.GodMode) {
+            if(GodMode) {
                 return false;
             }
 
@@ -22,7 +26,7 @@ namespace CheatCommands {
         }
         
         public override bool CanBeHitByProjectile(Projectile proj) {
-            if(CheatCommands.GodMode) {
+            if(GodMode) {
                 return false;
             }
 
@@ -30,7 +34,7 @@ namespace CheatCommands {
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo) {
-            if(CheatCommands.InfiniteAmmo) {
+            if(InfiniteAmmo) {
                 return false;
             }
 
@@ -38,18 +42,18 @@ namespace CheatCommands {
         }
 
         public override void OnEnterWorld(Player player) {
-            CheatCommands.MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
+            MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
         }
 
         public override void PostUpdateMiscEffects() {
             CommandUtils.ChangePlayerMana(player);
 
-            if(CheatCommands.GodMode) {
+            if(GodMode) {
                 RemoveDebuffs();
                 RefillMana(false);
             }
         }
-
+        
         public void RefillLife() {
             int maxLife = (player.statLifeMax2 > player.statLifeMax ? player.statLifeMax2 : player.statLifeMax);
 

@@ -8,8 +8,9 @@ namespace CheatCommands.Commands.Player {
         public override int MinimumArguments => 0;
 
         public override void Action(CommandCaller caller, string[] args) {
-            CheatCommands.InfiniteAmmo = !CheatCommands.InfiniteAmmo;
-            caller.Reply("Infinite ammo " + (CheatCommands.InfiniteAmmo ? "enabled" : "disabled") + "!");
+            CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
+            player.InfiniteAmmo = !player.InfiniteAmmo;
+            caller.Reply("Infinite ammo " + (player.InfiniteAmmo ? "enabled" : "disabled") + "!");
         }
     }
 }

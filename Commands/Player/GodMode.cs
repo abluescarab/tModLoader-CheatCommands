@@ -8,16 +8,16 @@ namespace CheatCommands.Commands.Player {
         public override int MinimumArguments => 0;
 
         public override void Action(CommandCaller caller, string[] args) {
-            CheatCommands.GodMode = !CheatCommands.GodMode;
+            CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
+            player.GodMode = !player.GodMode;
 
-            if(CheatCommands.GodMode) {
-                CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
+            if(player.GodMode) {
                 player.RefillLife();
                 player.RefillMana(true);
                 player.RemoveDebuffs();
             }
 
-            caller.Reply("God mode " + (CheatCommands.GodMode ? "enabled" : "disabled") + "!");
+            caller.Reply("God mode " + (player.GodMode ? "enabled" : "disabled") + "!");
         }
     }
 }
