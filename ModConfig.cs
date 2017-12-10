@@ -9,19 +9,19 @@ using Terraria.ModLoader;
 
 namespace ModConfiguration {
     public class ModConfig {
-        private Dictionary<string, ModOption> options = new Dictionary<string, ModOption>();
-        private string fileName = "";
-        private Preferences preferences;
+        private Dictionary<string, ModOption> _options = new Dictionary<string, ModOption>();
+        private string _fileName = "";
+        private Preferences _preferences;
 
         /// <summary>
         /// The name of the configuration file (without extension).
         /// </summary>
         public string FileName {
-            get { return fileName; }
+            get { return _fileName; }
             set {
-                if(!fileName.Equals(value) && !string.IsNullOrWhiteSpace(value)) {
-                    fileName = value;
-                    preferences = new Preferences(FilePath);
+                if(!_fileName.Equals(value) && !string.IsNullOrWhiteSpace(value)) {
+                    _fileName = value;
+                    _preferences = new Preferences(FilePath);
                 }
             }
         }
@@ -45,8 +45,8 @@ namespace ModConfiguration {
         /// Add a new configuration option.
         /// </summary>
         public void Add(string name, object defaultValue) {
-            if(!options.ContainsKey(name)) {
-                options.Add(name, new ModOption(name, defaultValue));
+            if(!_options.ContainsKey(name)) {
+                _options.Add(name, new ModOption(name, defaultValue));
             }
         }
 
@@ -54,8 +54,8 @@ namespace ModConfiguration {
         /// Add a new configuration option.
         /// </summary>
         public void Add(ModOption option) {
-            if(!options.ContainsKey(option.Name)) {
-                options.Add(option.Name, option);
+            if(!_options.ContainsKey(option.Name)) {
+                _options.Add(option.Name, option);
             }
         }
 
@@ -72,8 +72,8 @@ namespace ModConfiguration {
         /// Remove a configuration option.
         /// </summary>
         public void Remove(string name) {
-            if(options.ContainsKey(name)) {
-                options.Remove(name);
+            if(_options.ContainsKey(name)) {
+                _options.Remove(name);
             }
         }
 
@@ -81,8 +81,8 @@ namespace ModConfiguration {
         /// Remove a configuration option.
         /// </summary>
         public void Remove(ModOption option) {
-            if(options.ContainsKey(option.Name)) {
-                options.Remove(option.Name);
+            if(_options.ContainsKey(option.Name)) {
+                _options.Remove(option.Name);
             }
         }
 
@@ -90,49 +90,49 @@ namespace ModConfiguration {
         /// Get the value of a configuration option.
         /// </summary>
         public object Get(string name) {
-            return (options.ContainsKey(name) ? options[name].Value : null);
+            return (_options.ContainsKey(name) ? _options[name].Value : null);
         }
 
         /// <summary>
         /// Gets all of the configuration options.
         /// </summary>
         public List<ModOption> GetAll() {
-            return options.Values.ToList();
+            return _options.Values.ToList();
         }
 
         /// <summary>
         /// Gets all the configuration options of a specified type.
         /// </summary>
         public List<ModOption<T>> OfType<T>() {
-            return options.Values.Where(o => o.Value is T).ToList().ConvertAll(o => (ModOption<T>)o);
+            return _options.Values.Where(o => o.Value is T).ToList().ConvertAll(o => (ModOption<T>)o);
         }
 
         /// <summary>
         /// Set the value of a configuration option.
         /// </summary>
         public void Set(string name, object value) {
-            options[name].Value = value;
+            _options[name].Value = value;
         }
 
         /// <summary>
         /// Sorts the elements of a sequence in ascending order according to a key.
         /// </summary>
         public IOrderedEnumerable<ModOption> OrderBy<T>(Func<ModOption, T> keySelector) {
-            return options.Values.ToList().OrderBy(keySelector);
+            return _options.Values.ToList().OrderBy(keySelector);
         }
 
         /// <summary>
         /// Sorts the elements of a sequence in ascending order by using a specified comparer.
         /// </summary>
         public IOrderedEnumerable<ModOption> OrderBy<T>(Func<ModOption, T> keySelector, IComparer<T> comparer) {
-            return options.Values.ToList().OrderBy(keySelector, comparer);
+            return _options.Values.ToList().OrderBy(keySelector, comparer);
         }
 
         /// <summary>
         /// Perform an action on each ModOption in the configuration file.
         /// </summary>
         public void ForEach(Action<ModOption> action) {
-            options.Values.ToList().ForEach(action);
+            _options.Values.ToList().ForEach(action);
         }
 
         /// <summary>
@@ -142,14 +142,14 @@ namespace ModConfiguration {
         /// <param name="keySelector"></param>
         /// <returns></returns>
         public IOrderedEnumerable<ModOption> OrderByDescending<T>(Func<ModOption, T> keySelector) {
-            return options.Values.ToList().OrderByDescending(keySelector);
+            return _options.Values.ToList().OrderByDescending(keySelector);
         }
 
         /// <summary>
         /// Sorts the elements of a sequence in descending order by using a specified comparer.
         /// </summary>
         public IOrderedEnumerable<ModOption> OrderByDescending<T>(Func<ModOption, T> keySelector, IComparer<T> comparer) {
-            return options.Values.ToList().OrderByDescending(keySelector, comparer);
+            return _options.Values.ToList().OrderByDescending(keySelector, comparer);
         }
 
         /// <summary>
@@ -167,9 +167,9 @@ namespace ModConfiguration {
         /// </summary>
         /// <returns>whether a configuration file exists</returns>
         private bool Read() {
-            if(preferences.Load()) {
-                foreach(ModOption opt in options.Values) {
-                    object value = preferences.Get(opt.Name, opt.Value);
+            if(_preferences.Load()) {
+                foreach(ModOption opt in _options.Values) {
+                    object value = _preferences.Get(opt.Name, opt.Value);
 
                     if(value is JObject) {
                         opt.Value = ((JObject)value).ToObject(opt.Value.GetType());
@@ -192,7 +192,7 @@ namespace ModConfiguration {
         /// Write the configuration file.
         /// </summary>
         public void Save() {
-            Save(options.Values.ToList());
+            Save(_options.Values.ToList());
         }
 
         /// <summary>
@@ -214,13 +214,13 @@ namespace ModConfiguration {
         /// </summary>
         /// <param name="modOptions"></param>
         private void Save(List<ModOption> modOptions) {
-            preferences.Clear();
+            _preferences.Clear();
 
             foreach(ModOption opt in modOptions) {
-                preferences.Put(opt.Name, opt.Value);
+                _preferences.Put(opt.Name, opt.Value);
             }
 
-            preferences.Save();
+            _preferences.Save();
         }
     }
 

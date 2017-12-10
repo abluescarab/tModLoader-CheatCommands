@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using CheatCommands.Commands;
 using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
@@ -8,9 +9,9 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     class CheatCommands : Mod {
-        private static bool timeFrozen = false;
-        private static double frozenTime = 0.0;
-        private static List<CheatCommand> commands = new List<CheatCommand>() {
+        private static bool _timeFrozen = false;
+        private static double _frozenTime = 0.0;
+        private static List<CheatCommand> _commands = new List<CheatCommand>() {
             new KillAll(),
             new KillNPC(),
             new SpawnNPC(),
@@ -30,12 +31,12 @@ namespace CheatCommands {
         };
 
         public static bool TimeFrozen {
-            get { return timeFrozen; }
+            get { return _timeFrozen; }
             set {
-                timeFrozen = value;
+                _timeFrozen = value;
 
-                if(timeFrozen) {
-                    frozenTime = Main.time;
+                if(_timeFrozen) {
+                    _frozenTime = Main.time;
                 }
             }
         }
@@ -55,12 +56,12 @@ namespace CheatCommands {
             config.Add(DISABLED_COMMANDS, new string[] { });
             config.Load();
             
-            CommandUtils.LoadCommands(this, commands, (string[])config.Get(DISABLED_COMMANDS));
+            CommandUtils.LoadCommands(this, _commands, (string[])config.Get(DISABLED_COMMANDS));
         }
 
         public override void PostUpdateInput() {
             if(TimeFrozen) {
-                Main.time = frozenTime;
+                Main.time = _frozenTime;
             }
         }
     }
