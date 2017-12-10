@@ -5,9 +5,17 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {
+        private int _maxMana = 0;
+
         public bool GodMode { get; set; }
         public bool InfiniteAmmo { get; set; }
-        public int MaxMana { get; set; }
+        public int MaxMana {
+            get { return _maxMana; }
+            set {
+                _maxMana = value;
+                ChangeMana();
+            }
+        }
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
             if(GodMode) {

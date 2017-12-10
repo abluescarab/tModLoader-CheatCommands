@@ -17,7 +17,6 @@ namespace CheatCommands.Commands.Player {
             }
 
             player.MaxMana = mana;
-            player.ChangeMana();
             player.RefillMana(true);
             caller.Reply("Set mana to " + mana + "!");
         }
