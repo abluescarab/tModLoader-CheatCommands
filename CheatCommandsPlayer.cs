@@ -8,7 +8,6 @@ namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {
         private int _maxMana = 0;
         
-        public bool InfiniteAmmo { get; set; }
         public int MaxMana {
             get { return _maxMana; }
             set {
@@ -42,7 +41,7 @@ namespace CheatCommands {
         }
 
         public override bool ConsumeAmmo(Item weapon, Item ammo) {
-            if(InfiniteAmmo) {
+            if(InfiniteAmmo.Enabled) {
                 return false;
             }
 
