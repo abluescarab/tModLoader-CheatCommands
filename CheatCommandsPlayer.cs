@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CheatCommands.Commands.Player;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,8 +7,7 @@ using Terraria.ModLoader;
 namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {
         private int _maxMana = 0;
-
-        public bool GodMode { get; set; }
+        
         public bool InfiniteAmmo { get; set; }
         public int MaxMana {
             get { return _maxMana; }
@@ -16,9 +16,9 @@ namespace CheatCommands {
                 ChangeMana();
             }
         }
-
+        
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(GodMode) {
+            if(GodMode.Enabled) { 
                 return false;
             }
 
@@ -26,7 +26,7 @@ namespace CheatCommands {
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
-            if(GodMode) {
+            if(GodMode.Enabled) {
                 return false;
             }
 
@@ -34,7 +34,7 @@ namespace CheatCommands {
         }
 
         public override bool CanBeHitByProjectile(Projectile proj) {
-            if(GodMode) {
+            if(GodMode.Enabled) {
                 return false;
             }
 
@@ -54,7 +54,7 @@ namespace CheatCommands {
         }
 
         public override void PreUpdateBuffs() {
-            if(GodMode) {
+            if(GodMode.Enabled) {
                 RemoveDebuffs();
             }
         }
@@ -62,11 +62,11 @@ namespace CheatCommands {
         public override void PostUpdateMiscEffects() {
             ChangeMana();
 
-            if(GodMode) {
+            if(GodMode.Enabled) {
                 RefillMana(false);
             }
         }
-
+        
         public void ChangeMana() {
             if(MaxMana >= 400) {
                 player.statManaMax = 400;

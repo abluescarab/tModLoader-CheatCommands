@@ -14,16 +14,13 @@ namespace CheatCommands.Commands.Player {
             PlayerDeathReason reason = new PlayerDeathReason() {
                 SourceCustomReason = caller.Player.name + " killed " + (caller.Player.Male ? "him" : "her") + "self."
             };
-
-            bool godMode = player.GodMode;
-            player.GodMode = false;
-
-            caller.Player.KillMe(reason, caller.Player.statLifeMax, 0);
-
-            if(godMode) {
-                player.GodMode = true;
-            }
             
+            bool godMode = GodMode.Enabled;
+
+            GodMode.Enabled = false;
+            caller.Player.KillMe(reason, caller.Player.statLifeMax, 0);
+            GodMode.Enabled = godMode;
+
             return CommandReply.Empty;
         }
     }
