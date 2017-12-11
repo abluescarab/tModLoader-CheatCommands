@@ -8,9 +8,10 @@ namespace CheatCommands.Commands.World {
         public override int MinimumArguments => 0;
 
         // based on HERO's mod
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommands.TimeFrozen = !CheatCommands.TimeFrozen;
-            caller.Reply("Time has been " + (CheatCommands.TimeFrozen ? "frozen" : "unfrozen") + "!");
+            return new CommandReply(caller.Player.name + " " + (CheatCommands.TimeFrozen ? "froze" : "unfroze") +
+                " time!");
         }
     }
 }

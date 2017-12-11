@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
@@ -10,7 +11,7 @@ namespace CheatCommands.Commands.NPCs {
         public override int MinimumArguments => 1;
 
         // based on ExampleMod
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int npcType = 0;
             int x = 0;
             int y = 0;
@@ -73,10 +74,17 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             for(int i = 0; i < amount; i++) {
-                NPC.NewNPC(x, y, npcType);
+                int newNPC = NPC.NewNPC(x, y, npcType);
+
+                if(newNPC < 200) {
+                    NetMessage.SendData(MessageID.SyncNPC, number: newNPC);
+                }
+                else {
+                    break;
+                }
             }
 
-            caller.Reply("Spawned " + amount + " NPCs!");
+            return new CommandReply(caller.Player.name + " spawned " + amount + " NPCs!");
         }
     }
 }

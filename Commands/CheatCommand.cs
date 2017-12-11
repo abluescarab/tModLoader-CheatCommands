@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands {
@@ -7,7 +9,7 @@ namespace CheatCommands.Commands {
         public abstract string CommandName { get; }
         public abstract int MinimumArguments { get; }
         public override bool Autoload(ref string name) => false;
-        public override CommandType Type => CommandType.Chat;
+        public override CommandType Type => CommandType.World;
 
         public override void Action(CommandCaller caller, string input, string[] args) {
             string command = input.Replace("/" + Command, "");
@@ -29,9 +31,18 @@ namespace CheatCommands.Commands {
                 throw new UsageException();
             }
 
-            Action(caller, argList.ToArray());
+            CommandReply reply = Action(caller, argList.ToArray());
+
+            if(!reply.IsEmpty) {
+                if(Main.netMode == 0 || Type.HasFlag(CommandType.Chat)) {
+                    caller.Reply(reply.Text, reply.TextColor);
+                }
+                else {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(reply.Text), reply.TextColor);
+                }
+            }
         }
 
-        public abstract void Action(CommandCaller caller, string[] args);
+        public abstract CommandReply Action(CommandCaller caller, string[] args);
     }
 }

@@ -7,8 +7,9 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Remove a buff.";
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int buffType = 0;
 
             if(!int.TryParse(args[0], out buffType)) {
@@ -20,7 +21,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             caller.Player.ClearBuff(buffType);
-            caller.Reply("Cleared buff type " + buffType + ".");
+            return new CommandReply("Cleared buff type " + buffType + "!");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -10,14 +11,19 @@ namespace CheatCommands.Commands.World {
         public override int MinimumArguments => 0;
 
         // from Terraria server commands
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
+            string reply = "";
+
             if(!Liquid.panicMode) {
-                caller.Reply(Language.GetTextValue("Misc.ForceWaterSettling"));
+                reply = Language.GetTextValue("Misc.ForceWaterSettling");
                 Liquid.StartPanic();
             }
             else {
-                caller.Reply(Language.GetTextValue("CLI.WaterIsAlreadySettling"));
+                reply = Language.GetTextValue("CLI.WaterIsAlreadySettling");
             }
+
+            NetMessage.SendData(MessageID.WorldData);
+            return new CommandReply(reply);
         }
     }
 }

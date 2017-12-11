@@ -7,8 +7,9 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Set player mana.";
         public override string Usage => base.Usage + " <amount>";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             int mana = 0;
 
@@ -18,7 +19,7 @@ namespace CheatCommands.Commands.Player {
 
             player.MaxMana = mana;
             player.RefillMana(true);
-            caller.Reply("Set mana to " + mana + "!");
+            return new CommandReply("Set mana to " + mana + "!");
         }
     }
 }

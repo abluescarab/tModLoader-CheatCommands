@@ -6,11 +6,12 @@ namespace CheatCommands.Commands.Player {
         public override string Command => "ammo";
         public override string Description => "Enable/disable infinite ammo.";
         public override int MinimumArguments => 0;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             player.InfiniteAmmo = !player.InfiniteAmmo;
-            caller.Reply("Infinite ammo " + (player.InfiniteAmmo ? "enabled" : "disabled") + "!");
+            return new CommandReply("Infinite ammo " + (player.InfiniteAmmo ? "enabled" : "disabled") + "!");
         }
     }
 }

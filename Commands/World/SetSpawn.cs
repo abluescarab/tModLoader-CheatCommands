@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
@@ -9,7 +10,7 @@ namespace CheatCommands.Commands.World {
         public override string Description => "Set world spawn.";
         public override int MinimumArguments => 0;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             Vector2 tilePosition = (caller.Player.Bottom + Vector2.UnitY) * 0.0625f;
             int x = (int)tilePosition.X;
             int y = (int)tilePosition.Y;
@@ -17,7 +18,8 @@ namespace CheatCommands.Commands.World {
             Main.spawnTileX = x;
             Main.spawnTileY = y;
 
-            caller.Reply("Set world spawn to (" + x + ", " + y + ")!");
+            NetMessage.SendData(MessageID.WorldData);
+            return new CommandReply(caller.Player.name + " set world spawn to (" + x + ", " + y + ")!");
         }
     }
 }

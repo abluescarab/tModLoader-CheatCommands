@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandReply.cs" />
     <Compile Include="CheatCommands.cs" />
     <Compile Include="CheatCommandsPlayer.cs" />
     <Compile Include="Commands\CheatCommand.cs" />

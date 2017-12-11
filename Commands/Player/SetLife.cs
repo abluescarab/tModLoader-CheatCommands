@@ -7,8 +7,9 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Set player life.";
         public override string Usage => base.Usage + " <amount>";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int life = 0;
 
             if(!int.TryParse(args[0], out life)) {
@@ -17,7 +18,7 @@ namespace CheatCommands.Commands.Player {
 
             caller.Player.statLifeMax = life;
             caller.Player.GetModPlayer<CheatCommandsPlayer>().RefillLife();
-            caller.Reply("Set life to " + life + "!");
+            return new CommandReply("Set life to " + life + "!");
         }
     }
 }

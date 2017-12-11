@@ -8,8 +8,9 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Give yourself an item.";
         public override string Usage => base.Usage + " <type/name> [amount]";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int itemType = 0;
             int maxStack = 99;
             int amount = 1;
@@ -33,14 +34,16 @@ namespace CheatCommands.Commands.Player {
                 }
             }
 
-            while(amount > 0) {
-                int adjustedAmount = (amount > maxStack ? maxStack : amount);
-                
-                caller.Player.QuickSpawnItem(itemType, adjustedAmount);
-                amount -= maxStack;
+            int adjustedAmount = amount;
+
+            while(adjustedAmount > 0) {
+                int spawnAmount = (adjustedAmount > maxStack ? maxStack : adjustedAmount);
+
+                caller.Player.QuickSpawnItem(itemType, spawnAmount);
+                adjustedAmount -= maxStack;
             }
             
-            caller.Reply("Gave you item type " + itemType + ".");
+            return new CommandReply("Gave you " + amount + " of item type " + itemType + "!");
         }
     }
 }

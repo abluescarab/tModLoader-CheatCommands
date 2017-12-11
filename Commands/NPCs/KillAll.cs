@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
@@ -10,7 +11,7 @@ namespace CheatCommands.Commands.NPCs {
         public override int MinimumArguments => 0;
 
         // based on jopojelly's Cheat Sheet
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             string killType = (args.Length > 0 ? args[0] : "");
             int killed = 0;
 
@@ -22,11 +23,13 @@ namespace CheatCommands.Commands.NPCs {
                     if(killType.Equals("hostile") && CommandUtils.IsFriendlyNPC(npc)) continue;
 
                     npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
+                    NetMessage.SendData(MessageID.StrikeNPC, number: i, number2: npc.lifeMax, number3: 0f,
+                        number4: -npc.direction);
                     killed++;
                 }
             }
 
-            caller.Reply("Killed " + killed + " NPCs!");
+            return new CommandReply(caller.Player.name + " killed " + killed + " NPCs!");
         }
     }
 }

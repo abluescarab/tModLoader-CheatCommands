@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
@@ -10,7 +11,7 @@ namespace CheatCommands.Commands.World {
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int hours = 0;
             int minutes = 0;
             bool succeeded = true;
@@ -32,16 +33,19 @@ namespace CheatCommands.Commands.World {
                     succeeded = ToTwentyFourHourTime(args[0], out hours, out minutes);
                     break;
             }
-            
+
             if(succeeded) {
                 bool freezeTime = CheatCommands.TimeFrozen;
                 CheatCommands.TimeFrozen = false;
-                
+
                 ChangeTime(hours, minutes);
 
                 if(freezeTime) {
                     CheatCommands.TimeFrozen = true;
                 }
+
+                NetMessage.SendData(MessageID.WorldData);
+                return new CommandReply(caller.Player.name + " set time to " + args[0] + "!");
             }
             else {
                 throw new UsageException("Invalid time format: " + args[0]);

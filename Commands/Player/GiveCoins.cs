@@ -9,8 +9,9 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Give yourself money.";
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";
         public override int MinimumArguments => 4;
+        public override CommandType Type => CommandType.Chat;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int platinum = 0;
             int gold = 0;
             int silver = 0;
@@ -41,7 +42,7 @@ namespace CheatCommands.Commands.Player {
             caller.Player.QuickSpawnItem(ItemID.SilverCoin, silver);
             caller.Player.QuickSpawnItem(ItemID.CopperCoin, copper);
 
-            caller.Reply(
+            return new CommandReply(
                 "Gave you " +
                 Join(", ", new List<string>() {
                     (platinum > 0 ? platinum + " platinum" : ""),

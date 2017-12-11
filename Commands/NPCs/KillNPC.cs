@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
@@ -9,7 +10,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
 
-        public override void Action(CommandCaller caller, string[] args) {
+        public override CommandReply Action(CommandCaller caller, string[] args) {
             int npcType = 0;
             int killed = 0;
 
@@ -25,12 +26,14 @@ namespace CheatCommands.Commands.NPCs {
                 NPC npc = Main.npc[i];
 
                 if(CommandUtils.IsValidNPC(npc) && (npc.type == npcType || npc.TypeName.Equals(args[0]))) {
+                    NetMessage.SendData(MessageID.StrikeNPC, number: i, number2: npc.lifeMax, number3: 0f,
+                        number4: -npc.direction);
                     npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
                     killed++;
                 }
             }
 
-            caller.Reply("Killed " + killed + " NPCs!");
+            return new CommandReply(caller.Player.name + " killed " + killed + " NPCs!");
         }
     }
 }
