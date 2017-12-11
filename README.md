@@ -18,6 +18,7 @@ Adds a bunch of cheat commands to single-player games.
 * `/mana` - set mana
 
 ## World Commands
+* `/freeze` - freeze world time
 * `/setspawn` - set world spawn
 * `/settle` - settle liquids
 * `/time` - change world time
