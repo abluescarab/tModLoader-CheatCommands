@@ -32,7 +32,7 @@ namespace CheatCommands {
 
             return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
         }
-        
+
         public override bool CanBeHitByProjectile(Projectile proj) {
             if(GodMode) {
                 return false;
@@ -53,15 +53,20 @@ namespace CheatCommands {
             MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
         }
 
+        public override void PreUpdateBuffs() {
+            if(GodMode) {
+                RemoveDebuffs();
+            }
+        }
+
         public override void PostUpdateMiscEffects() {
             ChangeMana();
 
             if(GodMode) {
-                RemoveDebuffs();
                 RefillMana(false);
             }
         }
-        
+
         public void ChangeMana() {
             if(MaxMana >= 400) {
                 player.statManaMax = 400;
