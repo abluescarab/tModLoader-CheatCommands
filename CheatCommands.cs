@@ -5,6 +5,7 @@ using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
 using CheatCommands.Commands.World;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
@@ -74,6 +75,7 @@ namespace CheatCommands {
         public override void PostUpdateInput() {
             if(TimeFrozen) {
                 Main.time = _frozenTime;
+                NetMessage.SendData(MessageID.WorldData);
             }
         }
     }
