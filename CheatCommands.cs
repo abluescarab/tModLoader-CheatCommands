@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using CheatCommands.Commands;
 using CheatCommands.Commands.NPCs;
@@ -23,8 +22,6 @@ namespace CheatCommands {
             new GodMode(),
             new InfiniteAmmo(),
             new KillMe(),
-            new SetLife(),
-            new SetMana(),
             new FreezeTime(),
             new SetSpawn(),
             new SettleLiquids(),
@@ -56,7 +53,7 @@ namespace CheatCommands {
             ModConfiguration.ModConfig config = new ModConfiguration.ModConfig("CheatCommands");
             config.Add(DISABLED_COMMANDS, new string[] { });
             config.Load();
-            
+
             LoadCommands(_commands, (string[])config.Get(DISABLED_COMMANDS));
         }
 

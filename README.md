@@ -14,8 +14,6 @@ Adds a bunch of cheat commands to single-player games.
 * `/god` - enable/disable god mode
 * `/ammo` - enable/disable infinite ammo
 * `/killme` - kill your character
-* `/life` - set life
-* `/mana` - set mana
 
 ## World Commands
 * `/freeze` - freeze world time

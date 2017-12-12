@@ -5,17 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
-    class CheatCommandsPlayer : ModPlayer {
-        private int _maxMana = 0;
-        
-        public int MaxMana {
-            get { return _maxMana; }
-            set {
-                _maxMana = value;
-                ChangeMana();
-            }
-        }
-        
+    class CheatCommandsPlayer : ModPlayer {        
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
             if(GodMode.Enabled) { 
                 return false;
@@ -47,11 +37,7 @@ namespace CheatCommands {
 
             return base.ConsumeAmmo(weapon, ammo);
         }
-
-        public override void OnEnterWorld(Player player) {
-            MaxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
-        }
-
+        
         public override void PreUpdateBuffs() {
             if(GodMode.Enabled) {
                 RemoveDebuffs();
@@ -59,35 +45,21 @@ namespace CheatCommands {
         }
 
         public override void PostUpdateMiscEffects() {
-            ChangeMana();
-
             if(GodMode.Enabled) {
                 RefillMana(false);
             }
         }
         
-        public void ChangeMana() {
-            if(MaxMana >= 400) {
-                player.statManaMax = 400;
-            }
-
-            player.statManaMax2 = MaxMana;
-        }
-
         public void RefillLife() {
-            int maxLife = (player.statLifeMax2 > player.statLifeMax ? player.statLifeMax2 : player.statLifeMax);
-
-            player.statLife = maxLife;
-            player.HealEffect(maxLife, true);
+            player.statLife = player.statLifeMax2;
+            player.HealEffect(player.statLifeMax2, true);
         }
 
         public void RefillMana(bool showEffect) {
-            int maxMana = (player.statManaMax2 > player.statManaMax ? player.statManaMax2 : player.statManaMax);
-
-            player.statMana = maxMana;
+            player.statMana = player.statManaMax2;
 
             if(showEffect) {
-                player.ManaEffect(maxMana);
+                player.ManaEffect(player.statManaMax2);
             }
         }
 
