@@ -55,12 +55,7 @@ namespace CheatCommands {
         }
 
         public static bool IsValidNPC(NPC npc) {
-            return
-                npc.active &&
-                npc.type != NPCID.TargetDummy &&
-                npc.type != NPCID.CultistArcherBlue &&
-                npc.type != NPCID.CultistDevote &&
-                npc.type != NPCID.CultistTablet;
+            return npc.active && IsValidNPC(npc.type);
         }
 
         public static bool IsFriendlyNPC(NPC npc) {
