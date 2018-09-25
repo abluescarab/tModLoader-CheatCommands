@@ -1,12 +1,13 @@
 ﻿# Cheat Commands
 Adds a bunch of cheat commands to single-player games.
 
-## NPC Commands
+## Command Reference
+### NPC Commands
 * `/killall` - kill all NPCs
 * `/kill` - kill an NPC
 * `/spawn` - spawn an NPC
 
-## Player Commands
+### Player Commands
 * `/buff` - add a buff
 * `/debuff` - remove a buff
 * `/coins` - give coins
@@ -15,7 +16,7 @@ Adds a bunch of cheat commands to single-player games.
 * `/ammo` - enable/disable infinite ammo
 * `/killme` - kill your character
 
-## World Commands
+### World Commands
 * `/freeze` - freeze world time
 * `/setspawn` - set world spawn
 * `/settle` - settle liquids
