@@ -1,5 +1,5 @@
 ﻿# Cheat Commands
-Adds a bunch of cheat commands to single-player games.
+Adds a bunch of cheat commands to **single-player** games.
 
 ## Command Reference
 ### NPC Commands
