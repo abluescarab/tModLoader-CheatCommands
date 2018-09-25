@@ -4,6 +4,7 @@ using CheatCommands.Commands;
 using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
 using CheatCommands.Commands.World;
+using ModConfiguration;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +13,9 @@ namespace CheatCommands {
     class CheatCommands : Mod {
         private static bool _timeFrozen = false;
         private static double _frozenTime = 0.0;
-        private static List<CheatCommand> _commands = new List<CheatCommand>() {
+
+        private static readonly ModConfig Config = new ModConfig("CheatCommands");
+        private static readonly List<CheatCommand> Commands = new List<CheatCommand>() {
             new KillAll(),
             new KillNPC(),
             new SpawnNPC(),
@@ -29,6 +32,8 @@ namespace CheatCommands {
             new Time()
         };
 
+        public const string DisabledCommands = "DisabledCommands";
+
         public static bool TimeFrozen {
             get { return _timeFrozen; }
             set {
@@ -39,11 +44,9 @@ namespace CheatCommands {
                 }
             }
         }
-
-        public const string DISABLED_COMMANDS = "disabledCommands";
-
+        
         public CheatCommands() {
-            Properties = new ModProperties() {
+            Properties = new ModProperties {
                 Autoload = true,
                 AutoloadGores = true,
                 AutoloadSounds = true
@@ -51,11 +54,10 @@ namespace CheatCommands {
         }
 
         public override void Load() {
-            ModConfiguration.ModConfig config = new ModConfiguration.ModConfig("CheatCommands");
-            config.Add(DISABLED_COMMANDS, new string[] { });
-            config.Load();
+            Config.Add(DisabledCommands, new string[] { });
+            Config.Load();
 
-            LoadCommands(_commands, (string[])config.Get(DISABLED_COMMANDS));
+            LoadCommands(Commands, (string[])Config.Get(DisabledCommands));
         }
 
         private void LoadCommands(List<CheatCommand> commands, string[] disabled) {
@@ -73,10 +75,12 @@ namespace CheatCommands {
         }
 
         public override void PostUpdateInput() {
-            if(TimeFrozen) {
-                Main.time = _frozenTime;
-                NetMessage.SendData(MessageID.WorldData);
+            if(!TimeFrozen) {
+                return;
             }
+
+            Main.time = _frozenTime;
+            NetMessage.SendData(MessageID.WorldData);
         }
     }
 }
