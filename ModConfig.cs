@@ -5,13 +5,19 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Terraria;
 using Terraria.IO;
-using Terraria.ModLoader;
 
 namespace ModConfiguration {
     public class ModConfig {
-        private Dictionary<string, ModOption> _options = new Dictionary<string, ModOption>();
+        private readonly Dictionary<string, ModOption> _options = new Dictionary<string, ModOption>();
         private string _fileName = "";
         private Preferences _preferences;
+
+        /// <summary>
+        /// The number of options in the configuration file.
+        /// </summary>
+        public int Count {
+            get { return _options.Count; }
+        }
 
         /// <summary>
         /// The name of the configuration file (without extension).
@@ -34,7 +40,7 @@ namespace ModConfiguration {
         }
 
         /// <summary>
-        /// Create a new ModConfig.
+        /// Create a new ModConfig. The file is not created until you call <see cref="Save"/> for the first time.
         /// </summary>
         /// <param name="fileName">filename (without extension)</param>
         public ModConfig(string fileName) {
@@ -129,13 +135,6 @@ namespace ModConfiguration {
         }
 
         /// <summary>
-        /// Perform an action on each ModOption in the configuration file.
-        /// </summary>
-        public void ForEach(Action<ModOption> action) {
-            _options.Values.ToList().ForEach(action);
-        }
-
-        /// <summary>
         /// Sorts the elements of a sequence in descending order according to a key.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -153,20 +152,40 @@ namespace ModConfiguration {
         }
 
         /// <summary>
+        /// Perform an action on each ModOption in the configuration file.
+        /// </summary>
+        public void ForEach(Action<ModOption> action) {
+            _options.Values.ToList().ForEach(action);
+        }
+
+        /// <summary>
         /// Load the configuration from <see cref="FilePath"/>, or write to a new file if it doesn't exist.
         /// </summary>
         public void Load() {
-            if(!Read()) {
-                ErrorLogger.Log("Failed to read " + FilePath + ". Recreating config...");
-                Save();
+            Read();
+
+            var prefKeys = _preferences.GetAllKeys();
+
+            if((prefKeys.Count > 0 && _options.Keys.Count > 0) &&
+               (_options.Keys.Except(prefKeys).Any() || prefKeys.Except(_options.Keys).Any())) {
+                int fileIndex = 0;
+                string newFile = FilePath.Remove(FilePath.LastIndexOf('.')) + ".bak";
+
+                while(File.Exists(newFile + fileIndex)) {
+                    fileIndex++;
+                }
+
+                File.Copy(FilePath, newFile + fileIndex, true);
             }
+
+            Save();
         }
 
         /// <summary>
         /// Read the configuration from <see cref="FilePath"/>.
         /// </summary>
         /// <returns>whether a configuration file exists</returns>
-        private bool Read() {
+        private void Read() {
             if(_preferences.Load()) {
                 foreach(ModOption opt in _options.Values) {
                     object value = _preferences.Get(opt.Name, opt.Value);
@@ -181,11 +200,7 @@ namespace ModConfiguration {
                         opt.Value = value;
                     }
                 }
-
-                return true;
             }
-
-            return false;
         }
 
         /// <summary>
