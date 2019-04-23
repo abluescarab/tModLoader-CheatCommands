@@ -11,6 +11,10 @@ namespace CheatCommands {
                 return false;
             }
 
+            if(Knockback.Enabled) {
+                hitDirection = 0;
+            }
+
             return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
         }
 
