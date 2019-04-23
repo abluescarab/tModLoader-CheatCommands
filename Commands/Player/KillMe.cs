@@ -12,7 +12,7 @@ namespace CheatCommands.Commands.Player {
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             PlayerDeathReason reason = new PlayerDeathReason() {
-                SourceCustomReason = caller.Player.name + " killed " + (caller.Player.Male ? "him" : "her") + "self."
+                SourceCustomReason = $"{caller.Player.name} killed {(caller.Player.Male ? "him" : "her")}self."
             };
             
             bool godMode = GodMode.Enabled;

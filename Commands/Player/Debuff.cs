@@ -17,11 +17,11 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
-                throw new UsageException("Unknown buff type: " + buffType);
+                throw new UsageException($"Unknown buff type: {buffType}");
             }
 
             caller.Player.ClearBuff(buffType);
-            return new CommandReply("Cleared buff type " + buffType + "!");
+            return new CommandReply($"Cleared buff type {buffType}!");
         }
     }
 }

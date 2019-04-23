@@ -12,7 +12,7 @@ namespace CheatCommands.Commands.Player {
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Enabled = !Enabled;
-            return new CommandReply("Infinite ammo " + (Enabled ? "enabled" : "disabled") + "!");
+            return new CommandReply($"Infinite ammo {(Enabled ? "enabled" : "disabled")}!");
         }
     }
 }

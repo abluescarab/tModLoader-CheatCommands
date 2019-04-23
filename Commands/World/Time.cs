@@ -45,10 +45,10 @@ namespace CheatCommands.Commands.World {
                 }
 
                 NetMessage.SendData(MessageID.WorldData);
-                return new CommandReply(caller.Player.name + " set time to " + args[0] + "!");
+                return new CommandReply($"{caller.Player.name} set time to {args[0]}!");
             }
             else {
-                throw new UsageException("Invalid time format: " + args[0]);
+                throw new UsageException($"Invalid time format: {args[0]}");
             }
         }
 

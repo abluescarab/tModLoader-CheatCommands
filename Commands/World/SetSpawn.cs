@@ -19,7 +19,7 @@ namespace CheatCommands.Commands.World {
             Main.spawnTileY = y;
 
             NetMessage.SendData(MessageID.WorldData);
-            return new CommandReply(caller.Player.name + " set world spawn to (" + x + ", " + y + ")!");
+            return new CommandReply($"{caller.Player.name} set world spawn to ({x}, {y})!");
         }
     }
 }

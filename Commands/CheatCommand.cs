@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace CheatCommands.Commands {
         public override CommandType Type => CommandType.World;
 
         public override void Action(CommandCaller caller, string input, string[] args) {
-            string command = input.Replace("/" + Command, "");
+            string command = string.Join(" ", args);
 
             List<string> argList = new List<string>();
             while(command.Contains("\"")) {

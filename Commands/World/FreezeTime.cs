@@ -10,8 +10,7 @@ namespace CheatCommands.Commands.World {
         // based on HERO's mod
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommands.TimeFrozen = !CheatCommands.TimeFrozen;
-            return new CommandReply(caller.Player.name + " " + (CheatCommands.TimeFrozen ? "froze" : "unfroze") +
-                " time!");
+            return new CommandReply($"{caller.Player.name} {(CheatCommands.TimeFrozen ? "froze" : "unfroze")} time!");
         }
     }
 }

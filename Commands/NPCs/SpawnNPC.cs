@@ -24,11 +24,11 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             if(npcType == 0 || npcType >= NPCLoader.NPCCount) {
-                throw new UsageException("Unknown NPC type: " + npcType);
+                throw new UsageException($"Unknown NPC type: {npcType}");
             }
 
             if(!CommandUtils.IsValidNPC(npcType)) {
-                throw new UsageException("Invalid NPC type: " + npcType);
+                throw new UsageException($"Invalid NPC type: {npcType}");
             }
 
             if(args.Length > 1) {
@@ -84,7 +84,7 @@ namespace CheatCommands.Commands.NPCs {
                 }
             }
 
-            return new CommandReply(caller.Player.name + " spawned " + amount + " NPCs!");
+            return new CommandReply($"{caller.Player.name} spawned {amount} NPC{(amount == 1 ? "" : "s")}!");
         }
     }
 }

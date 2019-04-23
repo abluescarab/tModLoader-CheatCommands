@@ -6,9 +6,7 @@ namespace CheatCommands {
 
         public string Text { get; set; }
         public Color TextColor { get; set; }
-        public bool IsEmpty {
-            get { return string.IsNullOrEmpty(Text) && TextColor.PackedValue == 0; }
-        }
+        public bool IsEmpty => string.IsNullOrEmpty(Text) && TextColor.PackedValue == 0;
 
         public CommandReply(string text) : this() {
             Text = text;

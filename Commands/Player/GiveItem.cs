@@ -20,7 +20,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(itemType == 0 || itemType >= ItemLoader.ItemCount) {
-                throw new UsageException("Unknown item type: " + itemType);
+                throw new UsageException($"Unknown item type: {itemType}");
             }
             else {
                 Item item = new Item();
@@ -43,7 +43,7 @@ namespace CheatCommands.Commands.Player {
                 adjustedAmount -= maxStack;
             }
             
-            return new CommandReply("Gave you " + amount + " of item type " + itemType + "!");
+            return new CommandReply($"Gave you {amount} of item type {itemType}!");
         }
     }
 }

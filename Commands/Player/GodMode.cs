@@ -20,7 +20,7 @@ namespace CheatCommands.Commands.Player {
                 player.RemoveDebuffs();
             }
 
-            return new CommandReply("God mode " + (Enabled ? "enabled" : "disabled") + "!");
+            return new CommandReply($"God mode {(Enabled ? "enabled" : "disabled")}!");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
-                throw new UsageException("Unknown buff type: " + buffType);
+                throw new UsageException($"Unknown buff type: {buffType}");
             }
 
             if(args.Length > 1) {
@@ -30,7 +30,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             caller.Player.AddBuff(buffType, length);
-            return new CommandReply("Added buff type " + buffType + "!");
+            return new CommandReply($"Added buff type {buffType}!");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CheatCommands.Commands.NPCs {
         // based on jopojelly's Cheat Sheet
         public override CommandReply Action(CommandCaller caller, string[] args) {
             string killType = (args.Length > 0 ? args[0] : "");
-            int killed = 0;
+            int amount = 0;
 
             for(int i = 0; i < Main.npc.Length; i++) {
                 NPC npc = Main.npc[i];
@@ -24,11 +24,11 @@ namespace CheatCommands.Commands.NPCs {
 
                     npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
                     NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
-                    killed++;
+                    amount++;
                 }
             }
 
-            return new CommandReply(caller.Player.name + " killed " + killed + " NPCs!");
+            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}!");
         }
     }
 }

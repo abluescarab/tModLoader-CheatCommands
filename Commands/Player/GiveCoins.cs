@@ -18,19 +18,19 @@ namespace CheatCommands.Commands.Player {
             int copper = 0;
 
             if(!int.TryParse(args[0], out platinum)) {
-                throw new UsageException("Invalid number: " + args[0]);
+                throw new UsageException($"Invalid number: {args[0]}");
             }
 
             if(!int.TryParse(args[1], out gold)) {
-                throw new UsageException("Invalid number: " + args[1]);
+                throw new UsageException($"Invalid number: {args[1]}");
             }
 
             if(!int.TryParse(args[2], out silver)) {
-                throw new UsageException("Invalid number: " + args[2]);
+                throw new UsageException($"Invalid number: {args[2]}");
             }
 
             if(!int.TryParse(args[3], out copper)) {
-                throw new UsageException("Invalid number: " + args[3]);
+                throw new UsageException($"Invalid number: {args[3]}");
             }
 
             if(platinum == 0 && gold == 0 && silver == 0 && copper == 0) {
