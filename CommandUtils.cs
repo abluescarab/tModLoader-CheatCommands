@@ -8,7 +8,7 @@ namespace CheatCommands {
             int type = 0;
 
             for(int i = 0; i < BuffLoader.BuffCount; i++) {
-                if(name.Equals(Lang.GetBuffName(i))) {
+                if(name.ToLower().Equals(Lang.GetBuffName(i).ToLower())) {
                     type = i;
                     break;
                 }
@@ -21,7 +21,7 @@ namespace CheatCommands {
             int type = 0;
 
             for(int i = 0; i < ItemLoader.ItemCount; i++) {
-                if(name.Equals(Lang.GetItemNameValue(i))) {
+                if(name.ToLower().Equals(Lang.GetItemNameValue(i).ToLower())) {
                     type = i;
                     break;
                 }
@@ -34,7 +34,7 @@ namespace CheatCommands {
             int type = 0;
 
             for(int i = 0; i < NPCLoader.NPCCount; i++) {
-                if(name.Equals(Lang.GetNPCNameValue(i))) {
+                if(name.ToLower().Equals(Lang.GetNPCNameValue(i).ToLower())) {
                     type = i;
                     break;
                 }
