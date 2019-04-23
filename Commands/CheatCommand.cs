@@ -16,8 +16,8 @@ namespace CheatCommands.Commands {
 
             List<string> argList = new List<string>();
             while(command.Contains("\"")) {
-                int first = command.IndexOf("\"");
-                int last = command.IndexOf("\"", first + 1);
+                int first = command.IndexOf("\"", StringComparison.Ordinal);
+                int last = command.IndexOf("\"", first + 1, StringComparison.Ordinal);
 
                 string arg = command.Substring(first, last - first + 1);
                 command = command.Replace(arg, "");

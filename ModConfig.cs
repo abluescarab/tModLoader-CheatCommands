@@ -100,6 +100,13 @@ namespace ModConfiguration {
         }
 
         /// <summary>
+        /// Get the converted value of a configuration option.
+        /// </summary>
+        public T Get<T>(string name) {
+            return (T)(_options.ContainsKey(name) ? _options[name].Value : null);
+        }
+
+        /// <summary>
         /// Gets all of the configuration options.
         /// </summary>
         public List<ModOption> GetAll() {
