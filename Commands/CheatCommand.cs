@@ -38,7 +38,9 @@ namespace CheatCommands.Commands {
             argList.AddRange(command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 
             if(argList.Count < MinimumArguments) {
-                throw new UsageException();
+                reply = new CommandReply($"Usage: {Usage}", Color.Red);
+                caller.Reply(reply.Text, reply.TextColor);
+                return;
             }
 
             reply = Action(caller, argList.ToArray());
