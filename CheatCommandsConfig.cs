@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CheatCommands.Commands;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -7,6 +8,9 @@ namespace CheatCommands {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
         public static CheatCommandsConfig Instance;
+
+        [SeparatePage]
+        public List<MultiCommandDefinition> MultiCommands = new List<MultiCommandDefinition>();
 
         [Header("NPC commands")]
         [DefaultValue(true)]
