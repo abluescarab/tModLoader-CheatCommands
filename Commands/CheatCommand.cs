@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Chat;
@@ -7,15 +8,17 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands {
-    abstract class CheatCommand : ModCommand {
-        public abstract string CommandName { get; }
-        public abstract int MinimumArguments { get; }
+    public abstract class CheatCommand : ModCommand {
+        public virtual int MinimumArguments => 0;
         public override CommandType Type => CommandType.World;
         public abstract bool CommandEnabled { get; }
 
         public override void Action(CommandCaller caller, string input, string[] args) {
+            CommandReply reply;
+
             if(!CommandEnabled) {
-                Main.NewText("That command is disabled.", 255, 0, 0);
+                reply = new CommandReply("That command is disabled.", Color.Red);
+                caller.Reply(reply.Text, reply.TextColor);
                 return;
             }
 
@@ -38,7 +41,7 @@ namespace CheatCommands.Commands {
                 throw new UsageException();
             }
 
-            CommandReply reply = Action(caller, argList.ToArray());
+            reply = Action(caller, argList.ToArray());
 
             if(!reply.IsEmpty) {
                 if(Main.netMode == NetmodeID.SinglePlayer || Type.HasFlag(CommandType.Chat)) {

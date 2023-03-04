@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class KillNPC : CheatCommand {
-        public override string CommandName => "Kill NPC";
         public override string Command => "kill";
         public override string Description => "Kill an NPC.";
         public override string Usage => base.Usage + " <type/name>";

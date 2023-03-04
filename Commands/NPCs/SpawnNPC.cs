@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class SpawnNPC : CheatCommand {
-        public override string CommandName => "Spawn NPC";
         public override string Command => "spawn";
         public override string Description => "Spawn an NPC.";
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";

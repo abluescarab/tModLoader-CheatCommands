@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
     class Time : CheatCommand {
-        public override string CommandName => "Time";
         public override string Command => "time";
         public override string Description => "Change the time of day.";
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";

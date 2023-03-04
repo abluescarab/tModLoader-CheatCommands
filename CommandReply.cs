@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 
 namespace CheatCommands {
-    struct CommandReply {
+    public struct CommandReply {
         public static readonly CommandReply Empty = new CommandReply();
 
         public string Text { get; set; }

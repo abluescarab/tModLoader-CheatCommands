@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class GiveItem : CheatCommand {
-        public override string CommandName => "Give Item";
         public override string Command => "give";
         public override string Description => "Give yourself an item.";
         public override string Usage => base.Usage + " <type/name> [amount]";

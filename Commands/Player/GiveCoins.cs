@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class GiveCoins : CheatCommand {
-        public override string CommandName => "Give Coins";
         public override string Command => "coins";
         public override string Description => "Give yourself money.";
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";

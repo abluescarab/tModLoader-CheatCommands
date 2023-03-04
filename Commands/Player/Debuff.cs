@@ -2,7 +2,6 @@
 
 namespace CheatCommands.Commands.Player {
     class Debuff : CheatCommand {
-        public override string CommandName => "Remove Buff";
         public override string Command => "debuff";
         public override string Description => "Remove a buff.";
         public override string Usage => base.Usage + " <type/name>";

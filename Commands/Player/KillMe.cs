@@ -3,10 +3,8 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class KillMe : CheatCommand {
-        public override string CommandName => "Kill Me";
         public override string Command => "killme";
         public override string Description => "Kill your character.";
-        public override int MinimumArguments => 0;
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => CheatCommandsConfig.Instance.KillMeEnabled;
 

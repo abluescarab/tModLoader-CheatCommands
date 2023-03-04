@@ -4,7 +4,6 @@ namespace CheatCommands.Commands.Player {
     class Buff : CheatCommand {
         private const int DEFAULT_LENGTH = 60 * 30; // 60 ticks * 30 seconds
 
-        public override string CommandName => "Add Buff";
         public override string Command => "buff";
         public override string Description => "Add a buff.";
         public override string Usage => base.Usage + " <type/name> [time]";

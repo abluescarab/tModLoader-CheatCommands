@@ -5,10 +5,8 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
     class SetSpawn : CheatCommand {
-        public override string CommandName => "Set Spawn";
         public override string Command => "setspawn";
         public override string Description => "Set world spawn.";
-        public override int MinimumArguments => 0;
         public override bool CommandEnabled => CheatCommandsConfig.Instance.SetSpawnEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

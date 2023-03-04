@@ -4,11 +4,9 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class KillAll : CheatCommand {
-        public override string CommandName => "Kill All NPCs";
         public override string Command => "killall";
         public override string Description => "Kill all NPCs.";
         public override string Usage => base.Usage + " [friendly/hostile]";
-        public override int MinimumArguments => 0;
         public override bool CommandEnabled => CheatCommandsConfig.Instance.KillAllEnabled;
 
         // based on jopojelly's Cheat Sheet

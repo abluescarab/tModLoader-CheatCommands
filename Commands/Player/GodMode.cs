@@ -4,10 +4,8 @@ namespace CheatCommands.Commands.Player {
     class GodMode : CheatCommand {
         public static bool Enabled { get; set; }
 
-        public override string CommandName => "God Mode";
         public override string Command => "god";
         public override string Description => "Enable/disable god mode.";
-        public override int MinimumArguments => 0;
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => CheatCommandsConfig.Instance.GodModeEnabled;
 
