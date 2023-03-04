@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CheatCommands {
     class CheatCommandsPlayer : ModPlayer {        
-        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter) {
             if(GodMode.Enabled) { 
                 return false;
             }
@@ -15,7 +15,7 @@ namespace CheatCommands {
                 hitDirection = 0;
             }
 
-            return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
+            return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
@@ -34,12 +34,12 @@ namespace CheatCommands {
             return base.CanBeHitByProjectile(proj);
         }
 
-        public override bool ConsumeAmmo(Item weapon, Item ammo) {
+        public override bool CanConsumeAmmo(Item weapon, Item ammo) {
             if(InfiniteAmmo.Enabled) {
                 return false;
             }
 
-            return base.ConsumeAmmo(weapon, ammo);
+            return base.CanConsumeAmmo(weapon, ammo);
         }
         
         public override void PreUpdateBuffs() {
@@ -55,15 +55,15 @@ namespace CheatCommands {
         }
         
         public void RefillLife() {
-            player.statLife = player.statLifeMax2;
-            player.HealEffect(player.statLifeMax2, true);
+            Player.statLife = Player.statLifeMax2;
+            Player.HealEffect(Player.statLifeMax2, true);
         }
 
         public void RefillMana(bool showEffect) {
-            player.statMana = player.statManaMax2;
+            Player.statMana = Player.statManaMax2;
 
             if(showEffect) {
-                player.ManaEffect(player.statManaMax2);
+                Player.ManaEffect(Player.statManaMax2);
             }
         }
 
@@ -79,7 +79,7 @@ namespace CheatCommands {
                         break;
                     default:
                         if(Main.debuff[i]) {
-                            player.ClearBuff(i);
+                            Player.ClearBuff(i);
                         }
                         break;
                 }

@@ -10,6 +10,7 @@ namespace CheatCommands.Commands.Player {
         public override string Usage => base.Usage + " <type/name> [time]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.BuffEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int buffType = 0;
@@ -30,7 +31,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             caller.Player.AddBuff(buffType, length);
-            return new CommandReply($"Added buff type {buffType}!");
+            return new CommandReply($"Added buff type {buffType}.");
         }
     }
 }

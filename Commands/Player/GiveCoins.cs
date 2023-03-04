@@ -10,6 +10,7 @@ namespace CheatCommands.Commands.Player {
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";
         public override int MinimumArguments => 4;
         public override CommandType Type => CommandType.Chat;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.GiveCoinsEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int platinum = 0;
@@ -37,10 +38,10 @@ namespace CheatCommands.Commands.Player {
                 throw new UsageException();
             }
 
-            caller.Player.QuickSpawnItem(ItemID.PlatinumCoin, platinum);
-            caller.Player.QuickSpawnItem(ItemID.GoldCoin, gold);
-            caller.Player.QuickSpawnItem(ItemID.SilverCoin, silver);
-            caller.Player.QuickSpawnItem(ItemID.CopperCoin, copper);
+            caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.PlatinumCoin, platinum);
+            caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.GoldCoin, gold);
+            caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.SilverCoin, silver);
+            caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.CopperCoin, copper);
 
             return new CommandReply(
                 "Gave you " +
@@ -50,7 +51,7 @@ namespace CheatCommands.Commands.Player {
                     (silver > 0 ? silver + " silver" : ""),
                     (copper > 0 ? copper + " copper" : "")
                 }) +
-                "!");
+                ".");
         }
 
         private string Join(string separator, List<string> strings) {

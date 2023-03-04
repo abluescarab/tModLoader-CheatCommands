@@ -10,6 +10,7 @@ namespace CheatCommands.Commands.World {
         public override string Description => "Change the time of day.";
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.TimeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int hours = 0;
@@ -35,17 +36,17 @@ namespace CheatCommands.Commands.World {
             }
 
             if(succeeded) {
-                bool freezeTime = CheatCommands.TimeFrozen;
-                CheatCommands.TimeFrozen = false;
+                bool freezeTime = CheatCommandsSystem.TimeFrozen;
+                CheatCommandsSystem.TimeFrozen = false;
 
                 ChangeTime(hours, minutes);
 
                 if(freezeTime) {
-                    CheatCommands.TimeFrozen = true;
+                    CheatCommandsSystem.TimeFrozen = true;
                 }
 
                 NetMessage.SendData(MessageID.WorldData);
-                return new CommandReply($"{caller.Player.name} set time to {args[0]}!");
+                return new CommandReply($"{caller.Player.name} set time to {args[0]}.");
             }
             else {
                 throw new UsageException($"Invalid time format: {args[0]}");

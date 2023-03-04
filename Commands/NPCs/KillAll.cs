@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description => "Kill all NPCs.";
         public override string Usage => base.Usage + " [friendly/hostile]";
         public override int MinimumArguments => 0;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.KillAllEnabled;
 
         // based on jopojelly's Cheat Sheet
         public override CommandReply Action(CommandCaller caller, string[] args) {
@@ -23,12 +24,12 @@ namespace CheatCommands.Commands.NPCs {
                     if(killType.Equals("hostile") && CommandUtils.IsFriendlyNPC(npc)) continue;
 
                     npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
-                    NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
+                    NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
                     amount++;
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}!");
+            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}.");
         }
     }
 }

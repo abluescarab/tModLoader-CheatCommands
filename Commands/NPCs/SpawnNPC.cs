@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description => "Spawn an NPC.";
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";
         public override int MinimumArguments => 1;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.SpawnNPCEnabled;
 
         // based on ExampleMod
         public override CommandReply Action(CommandCaller caller, string[] args) {
@@ -74,7 +75,7 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             for(int i = 0; i < amount; i++) {
-                int newNPC = NPC.NewNPC(x, y, npcType);
+                int newNPC = NPC.NewNPC(NPC.GetSource_None(), x, y, npcType);
 
                 if(newNPC < 200) {
                     NetMessage.SendData(MessageID.SyncNPC, number: newNPC);
@@ -84,7 +85,7 @@ namespace CheatCommands.Commands.NPCs {
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} spawned {amount} NPC{(amount == 1 ? "" : "s")}!");
+            return new CommandReply($"{caller.Player.name} spawned {amount} NPC{(amount == 1 ? "" : "s")}.");
         }
     }
 }

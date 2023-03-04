@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description => "Kill an NPC.";
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.KillEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int npcType = 0;
@@ -27,12 +28,12 @@ namespace CheatCommands.Commands.NPCs {
 
                 if(CommandUtils.IsValidNPC(npc) && (npc.type == npcType || npc.TypeName.Equals(args[0]))) {
                     npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
-                    NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
+                    NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
                     amount++;
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}!");
+            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}.");
         }
     }
 }

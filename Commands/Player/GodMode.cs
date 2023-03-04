@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Enable/disable god mode.";
         public override int MinimumArguments => 0;
         public override CommandType Type => CommandType.Chat;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.GodModeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
@@ -20,7 +21,7 @@ namespace CheatCommands.Commands.Player {
                 player.RemoveDebuffs();
             }
 
-            return new CommandReply($"God mode {(Enabled ? "enabled" : "disabled")}!");
+            return new CommandReply($"God mode {(Enabled ? "enabled" : "disabled")}.");
         }
     }
 }

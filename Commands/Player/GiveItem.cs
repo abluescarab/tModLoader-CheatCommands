@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.Player {
         public override string Usage => base.Usage + " <type/name> [amount]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.GiveItemEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int itemType = 0;
@@ -39,11 +40,11 @@ namespace CheatCommands.Commands.Player {
             while(adjustedAmount > 0) {
                 int spawnAmount = (adjustedAmount > maxStack ? maxStack : adjustedAmount);
 
-                caller.Player.QuickSpawnItem(itemType, spawnAmount);
+                caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), itemType, spawnAmount);
                 adjustedAmount -= maxStack;
             }
             
-            return new CommandReply($"Gave you {amount} of item type {itemType}!");
+            return new CommandReply($"Gave you {amount} of item type {itemType}.");
         }
     }
 }

@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.World {
         public override string Command => "setspawn";
         public override string Description => "Set world spawn.";
         public override int MinimumArguments => 0;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.SetSpawnEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Vector2 tilePosition = (caller.Player.Bottom + Vector2.UnitY) * 0.0625f;
@@ -19,7 +20,7 @@ namespace CheatCommands.Commands.World {
             Main.spawnTileY = y;
 
             NetMessage.SendData(MessageID.WorldData);
-            return new CommandReply($"{caller.Player.name} set world spawn to ({x}, {y})!");
+            return new CommandReply($"{caller.Player.name} set world spawn to ({x}, {y}).");
         }
     }
 }

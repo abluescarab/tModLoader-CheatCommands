@@ -6,11 +6,12 @@ namespace CheatCommands.Commands.World {
         public override string Command => "freeze";
         public override string Description => "Freeze/unfreeze world time.";
         public override int MinimumArguments => 0;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.FreezeTimeEnabled;
 
         // based on HERO's mod
         public override CommandReply Action(CommandCaller caller, string[] args) {
-            CheatCommands.TimeFrozen = !CheatCommands.TimeFrozen;
-            return new CommandReply($"{caller.Player.name} {(CheatCommands.TimeFrozen ? "froze" : "unfroze")} time!");
+            CheatCommandsSystem.TimeFrozen = !CheatCommandsSystem.TimeFrozen;
+            return new CommandReply($"{caller.Player.name} {(CheatCommandsSystem.TimeFrozen ? "froze" : "unfroze")} time.");
         }
     }
 }

@@ -8,11 +8,12 @@ namespace CheatCommands.Commands.Player {
         public override string Description => "Kill your character.";
         public override int MinimumArguments => 0;
         public override CommandType Type => CommandType.Chat;
+        public override bool CommandEnabled => CheatCommandsConfig.Instance.KillMeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             PlayerDeathReason reason = new PlayerDeathReason() {
-                SourceCustomReason = $"{caller.Player.name} killed {(caller.Player.Male ? "him" : "her")}self."
+                SourceCustomReason = $"{caller.Player.name} killed themself."
             };
             
             bool godMode = GodMode.Enabled;
