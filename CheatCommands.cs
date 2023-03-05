@@ -3,7 +3,6 @@ using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
 using CheatCommands.Commands.World;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
@@ -13,7 +12,7 @@ namespace CheatCommands {
             new KillNPC(),
             new SpawnNPC(),
             new Buff(),
-            new Debuff(),
+            new RemoveBuff(),
             new GiveCoins(),
             new GiveItem(),
             new GodMode(),

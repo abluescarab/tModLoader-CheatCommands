@@ -1,8 +1,8 @@
 ﻿using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
-    class Debuff : CheatCommand {
-        public override string Command => "debuff";
+    class RemoveBuff : CheatCommand {
+        public override string Command => "removebuff";
         public override string Description => "Remove a buff.";
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
