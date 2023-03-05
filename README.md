@@ -2,6 +2,10 @@
 Adds a bunch of cheat commands to **single-player** games.
 
 ## Command Reference
+### Multicommands
+```
+/mc <name>                                  run a multicommand
+```
 ### NPC Commands
 ```
 /killall [friendly/hostile]                 kill all NPCs
@@ -11,12 +15,12 @@ Adds a bunch of cheat commands to **single-player** games.
 ### Player Commands
 ```
 /buff <type/name> [time]                    add a buff
-/debuff <type/name>                         remove a buff
+/removebuff <type/name>                     remove a buff
 /coins <platinum> <gold> <silver> <copper>  give yourself money
 /give <type/name> [amount]                  give yourself an item
 /god                                        toggle god mode
 /ammo                                       toggle infinite ammo
-/killme                                     kill your character
+/respawn                                    respawn your character
 ```
 ### World Commands
 ```
