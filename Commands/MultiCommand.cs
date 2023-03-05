@@ -15,7 +15,7 @@ namespace CheatCommands.Commands {
         public override string Description => "Run a multicommand.";
         public override string Usage => base.Usage + " <name>";
         public override bool CommandEnabled => true;
-        public override string Command => "m";
+        public override string Command => "mc";
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             MultiCommandDefinition def = CheatCommandsConfig.Instance.MultiCommands.FirstOrDefault(c => c.Name == args[0], null);
