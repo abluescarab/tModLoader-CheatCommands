@@ -17,7 +17,7 @@ namespace CheatCommands {
             new GiveItem(),
             new GodMode(),
             new InfiniteAmmo(),
-            new KillMe(),
+            new Respawn(),
             new FreezeTime(),
             new SetSpawn(),
             new SettleLiquids(),

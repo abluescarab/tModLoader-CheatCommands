@@ -2,16 +2,16 @@
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
-    class KillMe : CheatCommand {
-        public override string Command => "killme";
-        public override string Description => "Kill your character.";
+    class Respawn : CheatCommand {
+        public override string Command => "respawn";
+        public override string Description => "Respawn your character.";
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => CheatCommandsConfig.Instance.KillMeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             PlayerDeathReason reason = new PlayerDeathReason() {
-                SourceCustomReason = $"{caller.Player.name} killed themself."
+                SourceCustomReason = $"{caller.Player.name} respawned."
             };
             
             bool godMode = GodMode.Enabled;
