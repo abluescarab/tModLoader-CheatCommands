@@ -13,7 +13,7 @@ namespace CheatCommands.Commands {
     public class MultiCommand : CheatCommand {
         public override int MinimumArguments => 1;
         public override string Description => "Run a multicommand.";
-        public override string Usage => base.Usage + " <multicommand name>";
+        public override string Usage => base.Usage + " <name>";
         public override bool CommandEnabled => true;
         public override string Command => "m";
 
