@@ -1,6 +1,6 @@
 ﻿Adds a bunch of cheat commands to single-player games.
 
-Now has multicommand support! Create a single command that runs multiple other commands at the same time. Note: long commands might overflow the available box. To edit long commands, you can find the configuration file in Documents/My Games/Terraria/tModLoader/ModConfigs.
+Now has multicommand support! Create a single command that runs multiple other commands at the same time. [b]Note: long commands might overflow the available box.[/b] To edit long commands, you can find the configuration file in Documents/My Games/Terraria/tModLoader/ModConfigs.
 
 Multicommands
 /mc - run a multicommand
