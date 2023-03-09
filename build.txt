@@ -1,6 +1,6 @@
 ﻿displayName=Cheat Commands
 author=abluescarab
-version=2.0.0
+version=2.0.1
 homepage=https://github.com/abluescarab/tModLoader-CheatCommands
 dllReferences=
 modReferences=

@@ -2,6 +2,8 @@
 
 Now has multicommand support! Create a single command that runs multiple other commands at the same time. Note: long commands might overflow the available box. To edit long commands, you can find the configuration file in Documents/My Games/Terraria/tModLoader/ModConfigs.
 
+For the /give command, wrap item names in quotation marks like this: /give "Life Crystal" 5
+
 Multicommands
 /mc - run a multicommand
 
@@ -26,11 +28,11 @@ World Commands
 /time - change world time
 
 [Changelog]
+v2.0.1  2023-03-08
+* No longer throws UsageExceptions
+
 v2.0.0  2023-03-04
 * Added multicommand support
 * /debuff -> /removebuff
 * /killme -> /respawn
 * Updated for tModLoader 1.4
-
-v1.0.0  2017-00-00
-Initial release.
