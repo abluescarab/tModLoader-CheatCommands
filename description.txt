@@ -30,6 +30,7 @@ World Commands
 [Changelog]
 v1.0.1  2023-03-08
 * No longer throws UsageExceptions
+* Fixed version number
 
 v1.0.0  2023-03-04
 * Updated for tModLoader 1.4
