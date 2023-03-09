@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
@@ -20,7 +21,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(itemType == 0 || itemType >= ItemLoader.ItemCount) {
-                throw new UsageException($"Unknown item type: {itemType}");
+                return new CommandReply($"Unknown item type: {itemType}", Color.Red);
             }
             else {
                 Item item = new Item();

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,11 +25,11 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             if(npcType == 0 || npcType >= NPCLoader.NPCCount) {
-                throw new UsageException($"Unknown NPC type: {npcType}");
+                return new CommandReply($"Unknown NPC type: {npcType}", Color.Red);
             }
 
             if(!CommandUtils.IsValidNPC(npcType)) {
-                throw new UsageException($"Invalid NPC type: {npcType}");
+                return new CommandReply($"Invalid NPC type: {npcType}", Color.Red);
             }
 
             if(args.Length > 1) {

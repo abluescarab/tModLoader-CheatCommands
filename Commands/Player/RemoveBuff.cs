@@ -1,4 +1,6 @@
-﻿using Terraria.ModLoader;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class RemoveBuff : CheatCommand {
@@ -17,7 +19,7 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
-                throw new UsageException($"Unknown buff type: {buffType}");
+                return new CommandReply($"Unknown buff type: {buffType}", Color.Red);
             }
 
             caller.Player.ClearBuff(buffType);

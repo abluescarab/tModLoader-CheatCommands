@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using Microsoft.Xna.Framework;
+using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,7 +49,7 @@ namespace CheatCommands.Commands.World {
                 return new CommandReply($"{caller.Player.name} set time to {args[0]}.");
             }
             else {
-                throw new UsageException($"Invalid time format: {args[0]}");
+                return new CommandReply($"Invalid time format: {args[0]}", Color.Red);
             }
         }
 
