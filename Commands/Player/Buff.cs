@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
@@ -15,7 +14,7 @@ namespace CheatCommands.Commands.Player {
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int buffType = 0;
-            int length = 0;
+            int length = DEFAULT_LENGTH;
 
             if(!int.TryParse(args[0], out buffType)) {
                 buffType = CommandUtils.GetBuffType(args[0]);
