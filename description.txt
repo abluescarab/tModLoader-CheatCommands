@@ -20,6 +20,7 @@ Player Commands
 /god - enable/disable god mode
 /ammo - enable/disable infinite ammo
 /respawn - respawn your character
+/tp - teleport yourself to a coordinate or another player
 
 World Commands
 /freeze - freeze world time
@@ -28,6 +29,9 @@ World Commands
 /time - change world time
 
 [Changelog]
+v2.1.0  2023-03-10
+* Added /tp command
+
 v2.0.1  2023-03-08
 * No longer throws UsageExceptions
 
