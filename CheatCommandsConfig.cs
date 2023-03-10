@@ -56,6 +56,10 @@ namespace CheatCommands {
         [Label("Toggle damage knockback (/knockback)")]
         public bool KnockbackEnabled;
 
+        [DefaultValue(true)]
+        [Label("Teleport yourself to a coordinate or another player (/tp)")]
+        public bool TeleportEnabled;
+
         [Header("World commands")]
         [DefaultValue(true)]
         [Label("Freeze world time (/freeze)")]
