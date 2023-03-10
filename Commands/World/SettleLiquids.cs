@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.World {
     class SettleLiquids : CheatCommand {
         public override string Command => Language.GetTextValue("CLI.Settle_Command");
         public override string Description => "Settle liquids.";
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.SettleLiquidsEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SettleLiquidsEnabled;
         
         // from Terraria server commands
         public override CommandReply Action(CommandCaller caller, string[] args) {

@@ -9,7 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description => "Kill an NPC.";
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.KillEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int npcType = 0;

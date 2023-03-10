@@ -9,7 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description => "Spawn an NPC.";
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";
         public override int MinimumArguments => 1;
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.SpawnNPCEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SpawnNPCEnabled;
 
         // based on ExampleMod
         public override CommandReply Action(CommandCaller caller, string[] args) {

@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.Player {
         public override string Command => "knockback";
         public override string Description => "Enable/disable knockback.";
         public override CommandType Type => CommandType.Chat;
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.KnockbackEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KnockbackEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Enabled = !Enabled;

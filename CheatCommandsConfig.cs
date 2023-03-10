@@ -7,8 +7,6 @@ namespace CheatCommands {
     public class CheatCommandsConfig : ModConfig {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-        public static CheatCommandsConfig Instance;
-
         [SeparatePage]
         public List<MultiCommandDefinition> MultiCommands = new List<MultiCommandDefinition>();
 

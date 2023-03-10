@@ -9,7 +9,7 @@ namespace CheatCommands.Commands.Player {
         public override string Usage => base.Usage + " <type/name> [amount]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.GiveItemEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GiveItemEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int itemType = 0;

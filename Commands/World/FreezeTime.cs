@@ -4,7 +4,7 @@ namespace CheatCommands.Commands.World {
     class FreezeTime : CheatCommand {
         public override string Command => "freeze";
         public override string Description => "Freeze/unfreeze world time.";
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.FreezeTimeEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().FreezeTimeEnabled;
 
         // based on HERO's mod
         public override CommandReply Action(CommandCaller caller, string[] args) {

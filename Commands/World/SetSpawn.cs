@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.World {
     class SetSpawn : CheatCommand {
         public override string Command => "setspawn";
         public override string Description => "Set world spawn.";
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.SetSpawnEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SetSpawnEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Vector2 tilePosition = (caller.Player.Bottom + Vector2.UnitY) * 0.0625f;

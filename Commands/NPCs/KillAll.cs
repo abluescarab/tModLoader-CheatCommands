@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Command => "killall";
         public override string Description => "Kill all NPCs.";
         public override string Usage => base.Usage + " [friendly/hostile]";
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.KillAllEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillAllEnabled;
 
         // based on jopojelly's Cheat Sheet
         public override CommandReply Action(CommandCaller caller, string[] args) {

@@ -18,7 +18,10 @@ namespace CheatCommands.Commands {
         public override string Command => "mc";
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
-            MultiCommandDefinition def = CheatCommandsConfig.Instance.MultiCommands.FirstOrDefault(c => c.Name == args[0], null);
+            MultiCommandDefinition def = ModContent
+                .GetInstance<CheatCommandsConfig>()
+                .MultiCommands
+                .FirstOrDefault(c => c.Name == args[0]);
 
             if(def == null || def.Commands.Count == 0) {
                 return new CommandReply("Multicommand not configured.", Color.Red);

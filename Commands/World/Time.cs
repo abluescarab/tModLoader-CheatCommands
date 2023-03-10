@@ -10,7 +10,7 @@ namespace CheatCommands.Commands.World {
         public override string Description => "Change the time of day.";
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
-        public override bool CommandEnabled => CheatCommandsConfig.Instance.TimeEnabled;
+        public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().TimeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             int hours = 0;
