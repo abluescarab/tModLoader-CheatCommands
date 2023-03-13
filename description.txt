@@ -20,6 +20,7 @@ Player Commands
 /god - enable/disable god mode
 /ammo - enable/disable infinite ammo
 /respawn - respawn your character
+/pos - get your current coordinates
 /tp - teleport yourself to a coordinate or another player
 
 World Commands
@@ -29,6 +30,10 @@ World Commands
 /time - change world time
 
 [Changelog]
+v2.2.0  2023-03-13
+* Added /pos command
+* /buff works in seconds instead of ticks
+
 v2.1.0  2023-03-10
 * Added /tp command
 

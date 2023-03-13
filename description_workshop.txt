@@ -20,6 +20,7 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 /god - enable/disable god mode
 /ammo - enable/disable infinite ammo
 /respawn - respawn your character
+/pos - get your current coordinates
 /tp - teleport yourself to a coordinate or another player
 
 [b]World Commands[/b]
@@ -29,6 +30,10 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 /time - change world time
 
 [b]Changelog[/b]
+v2.2.0  2023-03-13
+* Added /pos command
+* /buff works in seconds instead of ticks
+
 v2.1.0  2023-03-10
 * Added /tp command
 

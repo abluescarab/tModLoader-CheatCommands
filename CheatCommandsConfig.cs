@@ -57,6 +57,10 @@ namespace CheatCommands {
         public bool KnockbackEnabled;
 
         [DefaultValue(true)]
+        [Label("Get your current coordinates (/pos)")]
+        public bool PositionEnabled;
+
+        [DefaultValue(true)]
         [Label("Teleport yourself to a coordinate or another player (/tp)")]
         public bool TeleportEnabled;
 
