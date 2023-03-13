@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player.Home {
     public class SetHome : CheatCommand {
         public override string Command => "sethome";
-        public override string Description => "Add a new home.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.SetHome_Description");
         public override string Usage => base.Usage + " <name> [<x> <y>]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;

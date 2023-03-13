@@ -10,79 +10,79 @@ namespace CheatCommands {
         [SeparatePage]
         public List<MultiCommandDefinition> MultiCommands = new List<MultiCommandDefinition>();
 
-        [Header("NPC commands")]
+        [Header("$Mods.CheatCommands.Config.NPCCommands_Header")]
         [DefaultValue(true)]
-        [Label("Kill all NPCs (/killall)")]
+        [Label("$Mods.CheatCommands.Config.KillAll_Label")]
         public bool KillAllEnabled;
 
         [DefaultValue(true)]
-        [Label("Kill an NPC (/kill)")]
+        [Label("$Mods.CheatCommands.Config.Kill_Label")]
         public bool KillEnabled;
 
         [DefaultValue(true)]
-        [Label("Spawn an NPC (/spawn)")]
+        [Label("$Mods.CheatCommands.Config.Spawn_Label")]
         public bool SpawnNPCEnabled;
 
-        [Header("Player commands")]
+        [Header("$Mods.CheatCommands.Config.PlayerCommands_Header")]
         [DefaultValue(true)]
-        [Label("Give yourself a buff (/buff)")]
+        [Label("$Mods.CheatCommands.Config.Buff_Label")]
         public bool BuffEnabled;
 
         [DefaultValue(true)]
-        [Label("Give yourself a debuff (/debuff)")]
+        [Label("$Mods.CheatCommands.Config.RemoveBuff_Label")]
         public bool DebuffEnabled;
 
         [DefaultValue(true)]
-        [Label("Give yourself money (/coins)")]
+        [Label("$Mods.CheatCommands.Config.GiveCoins_Label")]
         public bool GiveCoinsEnabled;
 
         [DefaultValue(true)]
-        [Label("Give yourself an item (/give)")]
+        [Label("$Mods.CheatCommands.Config.GiveItem_Label")]
         public bool GiveItemEnabled;
 
         [DefaultValue(true)]
-        [Label("Toggle god mode (/god)")]
+        [Label("$Mods.CheatCommands.Config.GodMode_Label")]
         public bool GodModeEnabled;
 
         [DefaultValue(true)]
-        [Label("Home teleport commands (/sethome, /delhome, /clearhomes, /home, /homes")]
+        [Label("$Mods.CheatCommands.Config.Home_Label")]
         public bool HomeEnabled;
 
         [DefaultValue(true)]
-        [Label("Toggle infinite ammo (/ammo)")]
+        [Label("$Mods.CheatCommands.Config.InfiniteAmmo_Label")]
         public bool InfiniteAmmoEnabled;
 
         [DefaultValue(true)]
-        [Label("Kill your character (/killme)")]
+        [Label("$Mods.CheatCommands.Config.KillMe_Label")]
         public bool KillMeEnabled;
 
         [DefaultValue(true)]
-        [Label("Toggle damage knockback (/knockback)")]
+        [Label("$Mods.CheatCommands.Config.Knockback_Label")]
         public bool KnockbackEnabled;
 
         [DefaultValue(true)]
-        [Label("Get your current coordinates (/pos)")]
+        [Label("$Mods.CheatCommands.Config.Position_Label")]
         public bool PositionEnabled;
 
         [DefaultValue(true)]
-        [Label("Teleport yourself to a coordinate or another player (/tp)")]
+        [Label("$Mods.CheatCommands.Config.Teleport_Label")]
         public bool TeleportEnabled;
 
-        [Header("World commands")]
+        [Header("$Mods.CheatCommands.Config.WorldCommands_Header")]
         [DefaultValue(true)]
-        [Label("Freeze world time (/freeze)")]
+        [Label("$Mods.CheatCommands.Config.FreezeTime_Label")]
         public bool FreezeTimeEnabled;
 
         [DefaultValue(true)]
-        [Label("Set world spawn (/setspawn)")]
+        [Label("$Mods.CheatCommands.Config.SetSpawn_Label")]
         public bool SetSpawnEnabled;
 
         [DefaultValue(true)]
-        [Label("Settle all liquids (/settle)")]
+        [Label("$Mods.CheatCommands.Config.SettleLiquids_Label")]
         public bool SettleLiquidsEnabled;
 
         [DefaultValue(true)]
-        [Label("Change time of day (/time)")]
+        [Label("$Mods.CheatCommands.Config.Time_Label")]
         public bool TimeEnabled;
     }
 }

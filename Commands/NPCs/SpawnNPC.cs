@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class SpawnNPC : CheatCommand {
         public override string Command => "spawn";
-        public override string Description => "Spawn an NPC.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Spawn_Description");
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SpawnNPCEnabled;

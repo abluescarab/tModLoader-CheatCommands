@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player.Home {
     public class DelHome : CheatCommand {
         public override string Command => "delhome";
-        public override string Description => "Delete a home for this world.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.DelHome_Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
@@ -14,7 +16,7 @@ namespace CheatCommands.Commands.Player.Home {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
 
             string name = args[0];
-            
+
             if(player.Homes.Has(name)) {
                 player.Homes.Remove(name);
                 return new CommandReply($"Removed \"{name}\" from world.");

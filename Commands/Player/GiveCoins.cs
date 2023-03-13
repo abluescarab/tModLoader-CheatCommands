@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class GiveCoins : CheatCommand {
         public override string Command => "coins";
-        public override string Description => "Give yourself money.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveCoins_Description");
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";
         public override int MinimumArguments => 4;
         public override CommandType Type => CommandType.Chat;

@@ -1,11 +1,13 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class GodMode : CheatCommand {
         public static bool Enabled { get; set; }
 
         public override string Command => "god";
-        public override string Description => "Enable/disable god mode.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GodMode_Description");
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GodModeEnabled;
 

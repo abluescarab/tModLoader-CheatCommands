@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class KillNPC : CheatCommand {
         public override string Command => "kill";
-        public override string Description => "Kill an NPC.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Kill_Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillEnabled;

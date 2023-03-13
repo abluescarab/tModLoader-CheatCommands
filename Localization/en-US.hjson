@@ -1,0 +1,97 @@
+﻿Mods: {
+    CheatCommands: {
+        CommandDisabled: That command is disabled.
+        Usage: Usage
+        Enabled: enabled
+        Disabled: disabled
+        Invalid: Invalid {0} value.
+
+        Commands: {
+            KillAll_Description: Kill all NPCs.
+            
+            Kill_Description: Kill an NPC.
+            
+            Spawn_Description: Spawn an NPC.
+            
+            ClearHomes_Description: Clear homes for this world or all worlds.
+            
+            DelHome_Description: Delete a home for this world.
+            
+            Home_Description: Teleport yourself to a home.
+            
+            Homes_Description: List available homes in this world.
+            
+            SetHome_Description: Add a new home.
+            
+            Buff_Description: Add a buff.
+            
+            GiveCoins_Description: Give yourself money.
+            
+            GiveItem_Description: Give yourself an item.
+            
+            GodMode_Description: Enable/disable god mode.
+
+            InfiniteAmmo_Description: Enable/disable infinite ammo.
+            InfiniteAmmo_Toggle: Infinite ammo {0}.
+
+            Knockback_Description: Enable/disable knockback.
+            
+            Position_Description: Get your current coordinates.
+            Position_Reply: Current position is {0}, {1}.
+            
+            RemoveBuff_Description: Remove a buff.
+            RemoveBuff_Unknown: Unknown buff type {0}.
+            RemoveBuff_Success: Cleared buff type {0}.
+            
+            Respawn_Description: Respawn your character.
+            Respawn_DeathReason: {0} respawned.
+
+            Teleport_Description: Teleport to a coordinate or player.
+            Teleport_SamePosition: Cannot teleport to your current position.
+            Teleport_PlayerNotFound: Player {0} not found.
+            Teleport_Success: Teleported you to {0}, {1}.
+
+            FreezeTime_Description: Freeze/unfreeze world time.
+            FreezeTime_Enable: {0} froze time.
+            FreezeTime_Disable: {0} unfroze time.
+
+            SetSpawn_Description: Set world spawn.
+            SetSpawn_Success: {0} set world spawn to {1}, {2}.
+
+            SettleLiquids_Description: Settle liquids.
+
+            Time_Description: Change the time of day.
+            Time_Success: {0} set time to {1}.
+            Time_Failure: Invalid time format: {0}
+
+            MultiCommand_Description: Run a multicommand.
+            MultiCommand_NotConfigured: Multicommand not configured.
+        }
+
+        Config: {
+            NPCCommands_Header: NPC Commands
+            KillAll_Label: Kill all NPCs (/killall)
+            Kill_Label: Kill an NPC (/kill)
+            Spawn_Label: Spawn an NPC (/spawn)
+
+            PlayerCommands_Header: Player commands
+            Buff_Label: Give yourself a buff (/buff)
+            RemoveBuff_Label: Remove a buff (/removebuff)
+            GiveCoins_Label: Give yourself money (/coins)
+            GiveItem_Label: Give yourself an item (/give)
+            GodMode_Label: Toggle god mode (/god)
+            Home_Label: Home teleport commands (/sethome, /delhome, /clearhomes, /home, /homes)
+            InfiniteAmmo_Label: Toggle infinite ammo (/ammo)
+            KillMe_Label: Kill your character (/killme)
+            Knockback_Label: Toggle damage knockback (/knockback)
+            Position_Label: Get your current coordinates (/pos)
+            Teleport_Label: Teleport to a coordinate or player (/tp)
+
+            WorldCommands_Header: World commands
+            FreezeTime_Label: Freeze world time (/freeze)
+            SetSpawn_Label: Set world spawn (/setspawn)
+            SettleLiquids_Label: Settle all liquids (/settle)
+            Time_Label: Change time of day (/time)
+        }
+    }
+}

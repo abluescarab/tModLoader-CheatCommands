@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
@@ -7,7 +8,8 @@ namespace CheatCommands.Commands.Player {
         private const int DEFAULT_LENGTH = 30; // 30 seconds
 
         public override string Command => "buff";
-        public override string Description => "Add a buff.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Buff_Description");
         public override string Usage => base.Usage + " <type/name> [seconds]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;

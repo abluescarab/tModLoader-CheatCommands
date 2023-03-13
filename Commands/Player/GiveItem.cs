@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class GiveItem : CheatCommand {
         public override string Command => "give";
-        public override string Description => "Give yourself an item.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveItem_Description");
         public override string Usage => base.Usage + " <type/name> [amount]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
@@ -43,7 +45,7 @@ namespace CheatCommands.Commands.Player {
                 caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), itemType, spawnAmount);
                 adjustedAmount -= maxStack;
             }
-            
+
             return new CommandReply($"Gave you {amount} of item type {itemType}.");
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands {
@@ -12,7 +13,8 @@ namespace CheatCommands.Commands {
 
     public class MultiCommand : CheatCommand {
         public override int MinimumArguments => 1;
-        public override string Description => "Run a multicommand.";
+        public override string Description 
+            => Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand_Description");
         public override string Usage => base.Usage + " <name>";
         public override bool CommandEnabled => true;
         public override string Command => "mc";
@@ -24,7 +26,9 @@ namespace CheatCommands.Commands {
                 .FirstOrDefault(c => c.Name == args[0]);
 
             if(def == null || def.Commands.Count == 0) {
-                return new CommandReply("Multicommand not configured.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand_NotConfigured"), 
+                    Color.Red);
             }
 
             foreach(string command in def.Commands) {

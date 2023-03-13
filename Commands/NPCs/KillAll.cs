@@ -1,11 +1,13 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.NPCs {
     class KillAll : CheatCommand {
         public override string Command => "killall";
-        public override string Description => "Kill all NPCs.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.KillAll_Description");
         public override string Usage => base.Usage + " [friendly/hostile]";
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillAllEnabled;
 

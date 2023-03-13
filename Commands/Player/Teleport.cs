@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     public class Teleport : CheatCommand {
         public override string Command => "tp";
-        public override string Description => "Teleport yourself to a coordinate or another player.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_Description");
         public override string Usage => base.Usage + " <player>/<x> <y>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
@@ -21,13 +23,19 @@ namespace CheatCommands.Commands.Player {
                 string playerName = args[0];
 
                 if(playerName == caller.Player.name) {
-                    return new CommandReply("Cannot teleport to your current position.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePlayer"),
+                        Color.Red);
                 }
 
                 int otherPlayer = Array.FindIndex(Main.player, p => p.name == playerName);
 
                 if(otherPlayer == -1) {
-                    return new CommandReply($"Player {playerName} not found.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue(
+                            "Mods.CheatCommands.Commands.Teleport_SamePosition",
+                            playerName),
+                        Color.Red);
                 }
 
                 x = (int)Main.player[otherPlayer].position.X;
@@ -35,21 +43,35 @@ namespace CheatCommands.Commands.Player {
             }
             else {
                 if(!int.TryParse(args[0], out x)) {
-                    return new CommandReply($"Invalid x value.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue(
+                            "Mods.CheatCommands.Invalid",
+                            "x"),
+                        Color.Red);
                 }
 
                 if(!int.TryParse(args[1], out y)) {
-                    return new CommandReply($"Invalid y value.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue(
+                            "Mods.CheatCommands.Invalid",
+                            "y"),
+                        Color.Red);
                 }
 
-                if(x == caller.Player.position.X 
+                if(x == caller.Player.position.X
                     && y == caller.Player.position.Y) {
-                    return new CommandReply("Cannot teleport to your current position.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePosition"), 
+                        Color.Red);
                 }
             }
 
             caller.Player.Teleport(new Vector2(x, y));
-            return new CommandReply($"Teleported you to {x}, {y}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Teleport_Success",
+                    x,
+                    y));
         }
     }
 }

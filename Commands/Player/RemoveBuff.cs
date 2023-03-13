@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class RemoveBuff : CheatCommand {
         public override string Command => "removebuff";
-        public override string Description => "Remove a buff.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.RemoveBuff_Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
@@ -19,11 +21,18 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
-                return new CommandReply($"Unknown buff type: {buffType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.RemoveBuff_Unknown",
+                        buffType),
+                    Color.Red);
             }
 
             caller.Player.ClearBuff(buffType);
-            return new CommandReply($"Cleared buff type {buffType}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.RemoveBuff_Success",
+                    buffType));
         }
     }
 }

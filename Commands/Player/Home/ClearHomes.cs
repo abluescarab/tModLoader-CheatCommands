@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player.Home {
     internal class ClearHomes : CheatCommand {
         public override string Command => "clearhomes";
-        public override string Description => "Clear homes for this world or all worlds.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.ClearHomes_Description");
         public override string Usage => base.Usage + " <world/all>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;

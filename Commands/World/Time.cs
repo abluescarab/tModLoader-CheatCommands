@@ -2,12 +2,14 @@
 using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
     class Time : CheatCommand {
         public override string Command => "time";
-        public override string Description => "Change the time of day.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Time_Description");
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().TimeEnabled;
@@ -46,10 +48,17 @@ namespace CheatCommands.Commands.World {
                 }
 
                 NetMessage.SendData(MessageID.WorldData);
-                return new CommandReply($"{caller.Player.name} set time to {args[0]}.");
+                return new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Time_Success",
+                        caller.Player.name,
+                        args[0]));
             }
             else {
-                return new CommandReply($"Invalid time format: {args[0]}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid",
+                        "time"),
+                    Color.Red);
             }
         }
 

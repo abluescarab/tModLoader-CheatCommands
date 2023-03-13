@@ -17,7 +17,9 @@ namespace CheatCommands.Commands {
             CommandReply reply;
 
             if(!CommandEnabled) {
-                reply = new CommandReply("That command is disabled.", Color.Red);
+                reply = new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.CommandDisabled"),
+                    Color.Red);
                 caller.Reply(reply.Text, reply.TextColor);
                 return;
             }
@@ -38,7 +40,8 @@ namespace CheatCommands.Commands {
             argList.AddRange(command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 
             if(argList.Count < MinimumArguments) {
-                reply = new CommandReply($"Usage: {Usage}", Color.Red);
+                reply = new CommandReply(
+                    $"{Language.GetTextValue("Mods.CheatCommands.Usage")}: {Usage}", Color.Red);
                 caller.Reply(reply.Text, reply.TextColor);
                 return;
             }

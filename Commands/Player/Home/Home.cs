@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player.Home {
     public class Home : CheatCommand {
         public override string Command => "home";
-        public override string Description => "Teleport yourself to a home.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Home_Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;

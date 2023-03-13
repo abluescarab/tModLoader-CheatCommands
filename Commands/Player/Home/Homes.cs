@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player.Home {
     public class Homes : CheatCommand {
         public override string Command => "homes";
-        public override string Description => "List available homes in this world.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Homes_Description");
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
 

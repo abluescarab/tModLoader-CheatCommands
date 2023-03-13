@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.World {
     class SetSpawn : CheatCommand {
         public override string Command => "setspawn";
-        public override string Description => "Set world spawn.";
+        public override string Description
+            => Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn_Description");
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SetSpawnEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
@@ -18,7 +20,11 @@ namespace CheatCommands.Commands.World {
             Main.spawnTileY = y;
 
             NetMessage.SendData(MessageID.WorldData);
-            return new CommandReply($"{caller.Player.name} set world spawn to ({x}, {y}).");
+            return new CommandReply(
+                Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn_Success",
+                caller.Player.name,
+                x,
+                y));
         }
     }
 }
