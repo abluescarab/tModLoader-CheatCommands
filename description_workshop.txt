@@ -22,6 +22,11 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 /respawn - respawn your character
 /pos - get your current coordinates
 /tp - teleport yourself to a coordinate or another player
+/sethome - add a home location
+/delhome - remove a home location
+/clearhomes - remove homes from the world or all worlds
+/home - teleport to a named home location
+/homes - list available homes in the world
 
 [b]World Commands[/b]
 /freeze - freeze world time
@@ -30,7 +35,8 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 /time - change world time
 
 [b]Changelog[/b]
-v2.2.0  2023-03-13
+v3.0.0  2023-03-13
+* Add /home, /homes, /sethome, /delhome, /clearhomes commands
 * Added /pos command
 * /buff works in seconds instead of ticks
 

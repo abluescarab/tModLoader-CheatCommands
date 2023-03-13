@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
-    internal class Teleport : CheatCommand {
+    public class Teleport : CheatCommand {
         public override string Command => "tp";
         public override string Description => "Teleport yourself to a coordinate or another player.";
         public override string Usage => base.Usage + " <player>/<x> <y>";

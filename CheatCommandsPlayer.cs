@@ -3,9 +3,20 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace CheatCommands {
-    class CheatCommandsPlayer : ModPlayer {        
+    class CheatCommandsPlayer : ModPlayer {
+        public HomeList Homes { get; } = new HomeList();
+
+        public override void SaveData(TagCompound tag) {
+            Homes.SaveData(tag);
+        }
+
+        public override void LoadData(TagCompound tag) {
+            Homes.LoadData(tag);
+        }
+
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter) {
             if(GodMode.Enabled) { 
                 return false;

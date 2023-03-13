@@ -45,6 +45,10 @@ namespace CheatCommands {
         public bool GodModeEnabled;
 
         [DefaultValue(true)]
+        [Label("Home teleport commands (/sethome, /delhome, /clearhomes, /home, /homes")]
+        public bool HomeEnabled;
+
+        [DefaultValue(true)]
         [Label("Toggle infinite ammo (/ammo)")]
         public bool InfiniteAmmoEnabled;
 
