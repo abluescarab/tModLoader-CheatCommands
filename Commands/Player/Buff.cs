@@ -3,11 +3,12 @@ using Terraria.ModLoader;
 
 namespace CheatCommands.Commands.Player {
     class Buff : CheatCommand {
-        private const int DEFAULT_LENGTH = 60 * 30; // 60 ticks * 30 seconds
+        private const int TICKS_PER_SECOND = 60;
+        private const int DEFAULT_LENGTH = 30; // 30 seconds
 
         public override string Command => "buff";
         public override string Description => "Add a buff.";
-        public override string Usage => base.Usage + " <type/name> [time]";
+        public override string Usage => base.Usage + " <type/name> [seconds]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().BuffEnabled;
@@ -30,7 +31,7 @@ namespace CheatCommands.Commands.Player {
                 }
             }
 
-            caller.Player.AddBuff(buffType, length);
+            caller.Player.AddBuff(buffType, length * TICKS_PER_SECOND);
             return new CommandReply($"Added buff type {buffType}.");
         }
     }
