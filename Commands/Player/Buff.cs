@@ -24,7 +24,11 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
-                return new CommandReply($"Unknown buff type: {buffType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Buff_Unknown",
+                        buffType),
+                    Color.Red);
             }
 
             if(args.Length > 1) {
@@ -34,7 +38,10 @@ namespace CheatCommands.Commands.Player {
             }
 
             caller.Player.AddBuff(buffType, length * TICKS_PER_SECOND);
-            return new CommandReply($"Added buff type {buffType}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Buff_Success",
+                    buffType));
         }
     }
 }

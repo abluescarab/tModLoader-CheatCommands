@@ -23,7 +23,7 @@ namespace CheatCommands.Commands.Player {
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.RemoveBuff_Unknown",
+                        "Mods.CheatCommands.Commands.Buff_Unknown",
                         buffType),
                     Color.Red);
             }

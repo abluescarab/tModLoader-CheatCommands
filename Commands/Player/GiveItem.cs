@@ -23,7 +23,11 @@ namespace CheatCommands.Commands.Player {
             }
 
             if(itemType == 0 || itemType >= ItemLoader.ItemCount) {
-                return new CommandReply($"Unknown item type: {itemType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.GiveItem_Unknown", 
+                        itemType), 
+                    Color.Red);
             }
             else {
                 Item item = new Item();
@@ -46,7 +50,11 @@ namespace CheatCommands.Commands.Player {
                 adjustedAmount -= maxStack;
             }
 
-            return new CommandReply($"Gave you {amount} of item type {itemType}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.GiveItem_Success",
+                    amount,
+                    itemType));
         }
     }
 }

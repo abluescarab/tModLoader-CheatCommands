@@ -36,9 +36,11 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 
 [b]Changelog[/b]
 v3.0.0  2023-03-13
+* Added translation support
 * Add /home, /homes, /sethome, /delhome, /clearhomes commands
 * Added /pos command
 * /buff works in seconds instead of ticks
+* Fixed /removebuff label in mod config
 
 v2.1.0  2023-03-10
 * Added /tp command

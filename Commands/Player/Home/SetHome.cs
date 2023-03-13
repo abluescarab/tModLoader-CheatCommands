@@ -23,22 +23,37 @@ namespace CheatCommands.Commands.Player.Home {
 
             if(args.Length > 1) {
                 if(!int.TryParse(args[1], out int x)) {
-                    return new CommandReply("Invalid x value.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue(
+                            "Mods.CheatCommands.Invalid", 
+                            "x"), 
+                        Color.Red);
                 }
 
                 if(!int.TryParse(args[2], out int y)) {
-                    return new CommandReply("Invalid y value.", Color.Red);
+                    return new CommandReply(
+                        Language.GetTextValue(
+                            "Mods.CheatCommands.Invalid",
+                            "y"),
+                        Color.Red);
                 }
 
                 pos = new Vector2(x, y);
             }
 
             if(player.Homes.Has(name)) {
-                return new CommandReply("A home with that name already exists.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.Commands.SetHome_Exists"),
+                    Color.Red);
             }
 
             player.Homes.Add(name, pos);
-            return new CommandReply($"Added \"{name}\" at {pos.X}, {pos.Y}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.SetHome_Success",
+                    name,
+                    pos.X,
+                    pos.Y));
         }
     }
 }

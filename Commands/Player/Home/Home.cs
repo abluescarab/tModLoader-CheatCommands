@@ -18,11 +18,18 @@ namespace CheatCommands.Commands.Player.Home {
             HomeLocation home = player.Homes.Get(name);
 
             if(home == null) {
-                return new CommandReply("That home does not exist.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Home_DoesNotExist",
+                        name), 
+                    Color.Red);
             }
 
             caller.Player.Teleport(home.Position);
-            return new CommandReply($"Teleported to \"{name}\".");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Home_Success", 
+                    name));
         }
     }
 }

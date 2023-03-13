@@ -2,49 +2,68 @@
     CheatCommands: {
         CommandDisabled: That command is disabled.
         Usage: Usage
-        Enabled: enabled
-        Disabled: disabled
         Invalid: Invalid {0} value.
 
         Commands: {
             KillAll_Description: Kill all NPCs.
             
             Kill_Description: Kill an NPC.
+            Kill_Success: "{0} killed {1} NPC(s)."
             
             Spawn_Description: Spawn an NPC.
+            Spawn_Unknown: Unknown NPC type {0}.
+            Spawn_Success: "{0} spawned {1} NPC(s)."
             
             ClearHomes_Description: Clear homes for this world or all worlds.
+            ClearHomes_Success: Cleared {0} home(s).
             
             DelHome_Description: Delete a home for this world.
+            DelHome_Remove: Removed {0} from world.
             
             Home_Description: Teleport yourself to a home.
+            Home_DoesNotExist: Home {0} does not exist.
+            Home_Success: Teleported to {0}.
             
             Homes_Description: List available homes in this world.
+            Homes_Current: Current homes: {0}.
+            Homes_None: No homes added.
             
             SetHome_Description: Add a new home.
+            SetHome_Exists: A home with that name already exists.
+            SetHome_Success: Added {0} at {1}, {2}.
             
             Buff_Description: Add a buff.
+            Buff_Unknown: Unknown buff type {0}.
+            Buff_Success: Added buff type {0}.
             
             GiveCoins_Description: Give yourself money.
+            GiveCoins_NoCoins: No coins given.
+            GiveCoins_Success: Gave you {0}.
             
             GiveItem_Description: Give yourself an item.
+            GiveItem_Unknown: Unknown item type {0}.
+            GiveItem_Success: Gave you {0} of item type {1}.
             
             GodMode_Description: Enable/disable god mode.
+            GodMode_Enable: God mode enabled.
+            GodMode_Disable: God mode disabled.
 
             InfiniteAmmo_Description: Enable/disable infinite ammo.
-            InfiniteAmmo_Toggle: Infinite ammo {0}.
+            InfiniteAmmo_Enable: Infinite ammo enabled.
+            InfiniteAmmo_Disable: Infinite ammo disabled.
 
             Knockback_Description: Enable/disable knockback.
+            Knockback_Enable: Knockback enabled.
+            Knockback_Disable: Knoback disabled.
             
             Position_Description: Get your current coordinates.
             Position_Reply: Current position is {0}, {1}.
             
             RemoveBuff_Description: Remove a buff.
-            RemoveBuff_Unknown: Unknown buff type {0}.
             RemoveBuff_Success: Cleared buff type {0}.
             
             Respawn_Description: Respawn your character.
-            Respawn_DeathReason: {0} respawned.
+            Respawn_DeathReason: "{0} respawned."
 
             Teleport_Description: Teleport to a coordinate or player.
             Teleport_SamePosition: Cannot teleport to your current position.
@@ -52,17 +71,16 @@
             Teleport_Success: Teleported you to {0}, {1}.
 
             FreezeTime_Description: Freeze/unfreeze world time.
-            FreezeTime_Enable: {0} froze time.
-            FreezeTime_Disable: {0} unfroze time.
+            FreezeTime_Enable: "{0} froze time."
+            FreezeTime_Disable: "{0} unfroze time."
 
             SetSpawn_Description: Set world spawn.
-            SetSpawn_Success: {0} set world spawn to {1}, {2}.
+            SetSpawn_Success: "{0} set world spawn to {1}, {2}."
 
             SettleLiquids_Description: Settle liquids.
 
             Time_Description: Change the time of day.
-            Time_Success: {0} set time to {1}.
-            Time_Failure: Invalid time format: {0}
+            Time_Success: "{0} set time to {1}."
 
             MultiCommand_Description: Run a multicommand.
             MultiCommand_NotConfigured: Multicommand not configured.

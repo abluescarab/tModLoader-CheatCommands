@@ -13,7 +13,11 @@ namespace CheatCommands.Commands.Player {
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Enabled = !Enabled;
-            return new CommandReply($"Knockback {(Enabled ? "enabled" : "disabled")}.");
+            return new CommandReply(
+                Language.GetTextValue("Mods.CheatCommands.Commands.Knockback_" + (
+                Enabled
+                ? "Enable"
+                : "Disable")));
         }
     }
 }

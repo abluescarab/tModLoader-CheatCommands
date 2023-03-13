@@ -25,10 +25,17 @@ namespace CheatCommands.Commands.Player.Home {
                 cleared = player.Homes.Clear();
             }
             else {
-                return new CommandReply("Invalid argument.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid", 
+                        "argument"), 
+                    Color.Red);
             }
 
-            return new CommandReply($"Cleared {cleared} home(s).");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.ClearHomes_Success",
+                    cleared));
         }
     }
 }

@@ -29,7 +29,11 @@ namespace CheatCommands.Commands.NPCs {
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Kill_Success",
+                    caller.Player.name,
+                    amount));
         }
     }
 }

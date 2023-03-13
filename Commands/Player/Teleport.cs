@@ -24,7 +24,7 @@ namespace CheatCommands.Commands.Player {
 
                 if(playerName == caller.Player.name) {
                     return new CommandReply(
-                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePlayer"),
+                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePosition"),
                         Color.Red);
                 }
 
@@ -33,7 +33,7 @@ namespace CheatCommands.Commands.Player {
                 if(otherPlayer == -1) {
                     return new CommandReply(
                         Language.GetTextValue(
-                            "Mods.CheatCommands.Commands.Teleport_SamePosition",
+                            "Mods.CheatCommands.Commands.Teleport_PlayerNotFound",
                             playerName),
                         Color.Red);
                 }

@@ -19,10 +19,17 @@ namespace CheatCommands.Commands.Player.Home {
 
             if(player.Homes.Has(name)) {
                 player.Homes.Remove(name);
-                return new CommandReply($"Removed \"{name}\" from world.");
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.DelHome_Remove",
+                        name));
             }
             else {
-                return new CommandReply($"Home \"{name}\" does not exist.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Home_DoesNotExist",
+                        name),
+                    Color.Red);
             }
         }
     }

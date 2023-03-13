@@ -21,7 +21,12 @@ namespace CheatCommands.Commands.Player {
                 player.RemoveDebuffs();
             }
 
-            return new CommandReply($"God mode {(Enabled ? "enabled" : "disabled")}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.GodMode_" + (
+                    Enabled
+                    ? "Enable"
+                    : "Disable")));
         }
     }
 }

@@ -21,23 +21,41 @@ namespace CheatCommands.Commands.Player {
             int copper = 0;
 
             if(!int.TryParse(args[0], out platinum)) {
-                return new CommandReply($"Invalid number: {args[0]}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid",
+                        "platinum"),
+                    Color.Red);
             }
 
             if(!int.TryParse(args[1], out gold)) {
-                return new CommandReply($"Invalid number: {args[1]}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid", 
+                        "gold"), 
+                    Color.Red);
             }
 
             if(!int.TryParse(args[2], out silver)) {
-                return new CommandReply($"Invalid number: {args[2]}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid",
+                        "silver"),
+                    Color.Red);
             }
 
             if(!int.TryParse(args[3], out copper)) {
-                return new CommandReply($"Invalid number: {args[3]}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Invalid",
+                        "copper"),
+                    Color.Red);
             }
 
             if(platinum == 0 && gold == 0 && silver == 0 && copper == 0) {
-                return new CommandReply($"No coins given.", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.NoCoins"),
+                    Color.Red);
             }
 
             caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.PlatinumCoin, platinum);
@@ -46,14 +64,14 @@ namespace CheatCommands.Commands.Player {
             caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), ItemID.CopperCoin, copper);
 
             return new CommandReply(
-                "Gave you " +
-                Join(", ", new List<string>() {
-                    (platinum > 0 ? platinum + " platinum" : ""),
-                    (gold > 0 ? gold + " gold" : ""),
-                    (silver > 0 ? silver + " silver" : ""),
-                    (copper > 0 ? copper + " copper" : "")
-                }) +
-                ".");
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.GiveCoins_Success",
+                    Join(", ", new List<string>() {
+                        (platinum > 0 ? platinum + " platinum" : ""),
+                        (gold > 0 ? gold + " gold" : ""),
+                        (silver > 0 ? silver + " silver" : ""),
+                        (copper > 0 ? copper + " copper" : "")
+                    })));
         }
 
         private string Join(string separator, List<string> strings) {

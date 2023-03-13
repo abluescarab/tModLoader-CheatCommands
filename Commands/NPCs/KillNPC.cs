@@ -22,7 +22,11 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             if(!CommandUtils.IsValidNPC(npcType)) {
-                return new CommandReply($"Invalid NPC type: {npcType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        npcType),
+                    Color.Red);
             }
 
             for(int i = 0; i < Main.npc.Length; i++) {
@@ -35,7 +39,11 @@ namespace CheatCommands.Commands.NPCs {
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} killed {amount} NPC{(amount == 1 ? "" : "s")}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Kill_Success",
+                    caller.Player.name,
+                    amount));
         }
     }
 }

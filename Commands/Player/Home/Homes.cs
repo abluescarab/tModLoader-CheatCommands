@@ -17,10 +17,14 @@ namespace CheatCommands.Commands.Player.Home {
             IEnumerable<string> homes = player.Homes.GetWorldHomes().Select(h => h.Name);
 
             if(homes.Count() > 0) {
-                return new CommandReply($"Current homes: {string.Join(", ", homes)}");
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Homes_Current",
+                        string.Join(", ", homes)));
             }
             else {
-                return new CommandReply("No homes added.");
+                return new CommandReply(
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Homes_None"));
             }
         }
     }

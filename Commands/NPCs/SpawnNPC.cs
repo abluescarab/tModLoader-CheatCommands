@@ -27,11 +27,19 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             if(npcType == 0 || npcType >= NPCLoader.NPCCount) {
-                return new CommandReply($"Unknown NPC type: {npcType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        npcType),
+                    Color.Red);
             }
 
             if(!CommandUtils.IsValidNPC(npcType)) {
-                return new CommandReply($"Invalid NPC type: {npcType}", Color.Red);
+                return new CommandReply(
+                    Language.GetTextValue(
+                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        npcType),
+                    Color.Red);
             }
 
             if(args.Length > 1) {
@@ -87,7 +95,11 @@ namespace CheatCommands.Commands.NPCs {
                 }
             }
 
-            return new CommandReply($"{caller.Player.name} spawned {amount} NPC{(amount == 1 ? "" : "s")}.");
+            return new CommandReply(
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.Spawn_Success",
+                    caller.Player.name,
+                    amount));
         }
     }
 }

@@ -16,7 +16,8 @@ namespace CheatCommands.Commands.World {
                 CheatCommandsSystem.TimeFrozen
                 ? "Enable"
                 : "Disable"
-                )));
+                ),
+                caller.Player.name));
         }
     }
 }

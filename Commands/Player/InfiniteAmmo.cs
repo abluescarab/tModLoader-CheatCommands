@@ -14,10 +14,11 @@ namespace CheatCommands.Commands.Player {
         public override CommandReply Action(CommandCaller caller, string[] args) {
             Enabled = !Enabled;
             return new CommandReply(
-                Language.GetTextValue("Mods.CheatCommands.Commands.InfiniteAmmo_Toggle",
-                Enabled
-                ? Language.GetTextValue("Mods.CheatCommands.Enabled")
-                : Language.GetTextValue("Mods.CheatCommands.Disabled")));
+                Language.GetTextValue(
+                    "Mods.CheatCommands.Commands.InfiniteAmmo_" + (
+                    Enabled
+                    ? "Enable"
+                    : "Disable")));
         }
     }
 }
