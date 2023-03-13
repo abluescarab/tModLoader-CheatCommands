@@ -1,6 +1,7 @@
 ﻿using CheatCommands.Commands;
 using CheatCommands.Commands.NPCs;
 using CheatCommands.Commands.Player;
+using CheatCommands.Commands.Player.Teleport;
 using CheatCommands.Commands.World;
 using System.Collections.Generic;
 using Terraria.ModLoader;
