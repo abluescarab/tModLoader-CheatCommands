@@ -3,7 +3,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace CheatCommands.Commands.Player.Teleport {
+namespace CheatCommands.Commands.Player {
     internal class Teleport : CheatCommand {
         public override string Command => "tp";
         public override string Description => "Teleport yourself to a coordinate or another player.";
