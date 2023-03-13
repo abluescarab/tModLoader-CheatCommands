@@ -21,6 +21,16 @@ Adds a bunch of cheat commands to **single-player** games.
 /god                                        toggle god mode
 /ammo                                       toggle infinite ammo
 /respawn                                    respawn your character
+/pos                                        get your current coordinates
+/tp                                         teleport to a coordinate or player
+```
+#### Home Commands
+```
+/sethome                                    add a home location
+/delhome                                    remove a home location
+/clearhomes                                 remove homes from the world or all worlds
+/home                                       teleport to a named home location
+/homes                                      list available homes in the world
 ```
 ### World Commands
 ```
