@@ -11,6 +11,7 @@ namespace CheatCommands.Commands.NPCs {
             => Language.GetTextValue("Mods.CheatCommands.Commands.Kill_Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

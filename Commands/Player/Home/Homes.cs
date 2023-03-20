@@ -9,7 +9,6 @@ namespace CheatCommands.Commands.Player.Home {
         public override string Command => "homes";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.Homes_Description");
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

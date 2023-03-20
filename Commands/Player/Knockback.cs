@@ -8,7 +8,6 @@ namespace CheatCommands.Commands.Player {
         public override string Command => "knockback";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.Knockback_Description");
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KnockbackEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

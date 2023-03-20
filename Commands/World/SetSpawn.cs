@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.World {
         public override string Command => "setspawn";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn_Description");
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SetSpawnEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

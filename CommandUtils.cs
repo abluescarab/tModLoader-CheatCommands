@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CheatCommands {
@@ -41,6 +42,26 @@ namespace CheatCommands {
             }
 
             return type;
+        }
+
+        public static bool GetPrefixType(string name, out int id) {
+            return GetPrefixType(name, out id, out string properName);
+        }
+
+        public static bool GetPrefixType(string name, out int id, out string properName) {
+            for(int i = 0; i < PrefixLoader.PrefixCount; i++) {
+                string other = Lang.prefix[i].Value.Trim('(', ')');
+
+                if(name.ToLower().Equals(other.ToLower())) {
+                    id = i;
+                    properName = other;
+                    return true;
+                }
+            }
+
+            id = 0;
+            properName = name;
+            return false;
         }
 
         public static bool IsValidNPC(int type) {

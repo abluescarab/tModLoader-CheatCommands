@@ -9,7 +9,6 @@ namespace CheatCommands.Commands.Player.Home {
             => Language.GetTextValue("Mods.CheatCommands.Commands.SetHome_Description");
         public override string Usage => base.Usage + " <name> [<x> <y>]";
         public override int MinimumArguments => 1;
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

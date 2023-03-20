@@ -11,6 +11,7 @@ namespace CheatCommands.Commands.NPCs {
             => Language.GetTextValue("Mods.CheatCommands.Commands.Spawn_Description");
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SpawnNPCEnabled;
 
         // based on ExampleMod

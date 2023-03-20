@@ -8,17 +8,15 @@ namespace CheatCommands.Commands.Player {
         public override string Command => "give";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.GiveItem_Description");
-        public override string Usage => base.Usage + " <type/name> [amount]";
+        public override string Usage => base.Usage + " <type/name> [amount] [prefix]";
         public override int MinimumArguments => 1;
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GiveItemEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
-            int itemType = 0;
-            int maxStack = 99;
             int amount = 1;
+            int prefixId = 0;
 
-            if(!int.TryParse(args[0], out itemType)) {
+            if(!int.TryParse(args[0], out int itemType)) {
                 itemType = CommandUtils.GetItemType(args[0]);
             }
 
@@ -29,24 +27,30 @@ namespace CheatCommands.Commands.Player {
                         itemType), 
                     Color.Red);
             }
-            else {
-                Item item = new Item();
-                item.SetDefaults(itemType);
-                maxStack = item.maxStack;
+
+            if(args.Length > 1 && !int.TryParse(args[1], out amount)) {
+                amount = 1;
+                CommandUtils.GetPrefixType(args[1], out prefixId);
             }
 
-            if(args.Length > 1) {
-                if(!int.TryParse(args[1], out amount)) {
-                    amount = 1;
-                }
+            if(args.Length > 2) {
+                CommandUtils.GetPrefixType(args[2], out prefixId);
             }
 
+            Item item = new Item(itemType, prefix: prefixId);
+            int maxStack = item.maxStack;
             int adjustedAmount = amount;
 
             while(adjustedAmount > 0) {
                 int spawnAmount = (adjustedAmount > maxStack ? maxStack : adjustedAmount);
 
-                caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), itemType, spawnAmount);
+                if(prefixId > 0) {
+                    caller.Player.QuickSpawnClonedItem(caller.Player.GetSource_Loot(), item, spawnAmount);
+                }
+                else {
+                    caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), itemType, spawnAmount);
+                }
+
                 adjustedAmount -= maxStack;
             }
 

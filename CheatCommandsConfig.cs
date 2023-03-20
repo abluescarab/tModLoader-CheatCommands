@@ -65,6 +65,10 @@ namespace CheatCommands {
         public bool PositionEnabled;
 
         [DefaultValue(true)]
+        [Label("$Mods.CheatCommands.Config.Prefix_Label")]
+        public bool PrefixEnabled;
+
+        [DefaultValue(true)]
         [Label("$Mods.CheatCommands.Config.Teleport_Label")]
         public bool TeleportEnabled;
 

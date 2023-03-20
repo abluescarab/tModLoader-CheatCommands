@@ -6,6 +6,7 @@ namespace CheatCommands.Commands.World {
         public override string Command => "freeze";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.FreezeTime_Description");
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().FreezeTimeEnabled;
 
         // based on HERO's mod

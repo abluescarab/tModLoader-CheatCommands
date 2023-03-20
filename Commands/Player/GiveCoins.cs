@@ -11,7 +11,6 @@ namespace CheatCommands.Commands.Player {
             => Language.GetTextValue("Mods.CheatCommands.Commands.GiveCoins_Description");
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";
         public override int MinimumArguments => 4;
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GiveCoinsEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

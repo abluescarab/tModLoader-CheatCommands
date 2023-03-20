@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace CheatCommands.Commands {
     public abstract class CheatCommand : ModCommand {
         public virtual int MinimumArguments => 0;
-        public override CommandType Type => CommandType.World;
+        public override CommandType Type => CommandType.Chat;
         public abstract bool CommandEnabled { get; }
 
         public override void Action(CommandCaller caller, string input, string[] args) {

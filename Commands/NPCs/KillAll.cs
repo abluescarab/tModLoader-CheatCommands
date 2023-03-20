@@ -9,6 +9,7 @@ namespace CheatCommands.Commands.NPCs {
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.KillAll_Description");
         public override string Usage => base.Usage + " [friendly/hostile]";
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillAllEnabled;
 
         // based on jopojelly's Cheat Sheet

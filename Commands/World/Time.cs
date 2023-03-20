@@ -12,6 +12,7 @@ namespace CheatCommands.Commands.World {
             => Language.GetTextValue("Mods.CheatCommands.Commands.Time_Description");
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
+        public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().TimeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

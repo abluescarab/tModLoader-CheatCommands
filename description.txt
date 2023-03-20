@@ -21,6 +21,7 @@ Player Commands
 /ammo - enable/disable infinite ammo
 /respawn - respawn your character
 /pos - get your current coordinates
+/prefix - apply a prefix to your held item
 /tp - teleport yourself to a coordinate or another player
 /sethome - add a home location
 /delhome - remove a home location
@@ -35,6 +36,10 @@ World Commands
 /time - change world time
 
 [Changelog]
+v3.1.0  2023-03-19
+* Added prefix support to /give command
+* Added /prefix command
+
 v3.0.0  2023-03-13
 * Added translation support
 * Add /home, /homes, /sethome, /delhome, /clearhomes commands

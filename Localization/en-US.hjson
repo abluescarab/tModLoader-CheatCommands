@@ -59,6 +59,11 @@
             Position_Description: Get your current coordinates.
             Position_Reply: Current position is {0}, {1}.
             
+            Prefix_Description: Modify the prefix for your held item.
+            Prefix_NoItem: No item selected.
+            Prefix_Invalid: Invalid prefix.
+            Prefix_Success: Changed prefix for {0} to {1}.
+
             RemoveBuff_Description: Remove a buff.
             RemoveBuff_Success: Cleared buff type {0}.
             
@@ -103,6 +108,7 @@
             KillMe_Label: Kill your character (/killme)
             Knockback_Label: Toggle damage knockback (/knockback)
             Position_Label: Get your current coordinates (/pos)
+            Prefix_Label: Change the prefix for your held item (/prefix)
             Teleport_Label: Teleport to a coordinate or player (/tp)
 
             WorldCommands_Header: World commands

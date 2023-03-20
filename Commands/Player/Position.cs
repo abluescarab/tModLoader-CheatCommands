@@ -7,7 +7,6 @@ namespace CheatCommands.Commands.Player {
         public override string Command => "pos";
         public override string Description
             => Language.GetTextValue("Mods.CheatCommands.Commands.Position_Description");
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().PositionEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {

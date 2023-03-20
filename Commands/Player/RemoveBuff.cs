@@ -10,7 +10,6 @@ namespace CheatCommands.Commands.Player {
             => Language.GetTextValue("Mods.CheatCommands.Commands.RemoveBuff_Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
-        public override CommandType Type => CommandType.Chat;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().DebuffEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
