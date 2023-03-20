@@ -36,6 +36,9 @@ For the /give command, wrap item names in quotation marks like this: /give "Life
 /time - change world time
 
 [b]Changelog[/b]
+v3.1.1  2023-03-19
+* Hotfix: prefix command lists item name correctly
+
 v3.1.0  2023-03-19
 * Added prefix support to /give command
 * Added /prefix command

@@ -30,8 +30,8 @@ namespace CheatCommands.Commands.Player {
 
             return new CommandReply(
                 Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_Success",
-                properName,
-                prefix));
+                caller.Player.HeldItem.Name,
+                properName));
         }
     }
 }
