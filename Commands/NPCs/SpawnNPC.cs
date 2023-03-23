@@ -78,15 +78,15 @@ namespace CheatCommands.Commands.NPCs {
             }
 
             if(xRelative) {
-                x += (int)caller.Player.Bottom.X;
+                x += (int)caller.Player.MountedCenter.X;
             }
 
             if(yRelative) {
-                y += (int)caller.Player.Bottom.Y;
+                y += (int)caller.Player.MountedCenter.Y;
             }
 
             for(int i = 0; i < amount; i++) {
-                int newNPC = NPC.NewNPC(NPC.GetSource_None(), x, y, npcType);
+                int newNPC = NPC.NewNPC(Entity.GetSource_None(), x, y, npcType);
 
                 if(newNPC < 200) {
                     NetMessage.SendData(MessageID.SyncNPC, number: newNPC);

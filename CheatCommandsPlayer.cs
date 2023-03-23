@@ -18,7 +18,7 @@ namespace CheatCommands {
         }
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter) {
-            if(GodMode.Enabled) { 
+            if(GodMode.Enabled) {
                 return false;
             }
 
@@ -52,7 +52,7 @@ namespace CheatCommands {
 
             return base.CanConsumeAmmo(weapon, ammo);
         }
-        
+
         public override void PreUpdateBuffs() {
             if(GodMode.Enabled) {
                 RemoveDebuffs();
@@ -64,7 +64,7 @@ namespace CheatCommands {
                 RefillMana(false);
             }
         }
-        
+
         public void RefillLife() {
             Player.statLife = Player.statLifeMax2;
             Player.HealEffect(Player.statLifeMax2, true);
@@ -80,20 +80,29 @@ namespace CheatCommands {
 
         public void RemoveDebuffs() {
             for(int i = 0; i < Main.debuff.Length; i++) {
-                switch(i) {
-                    case BuffID.Horrified:      // fighting Wall of Flesh
-                    case BuffID.TheTongue:      // in contact with Wall of Flesh tongue
-                    case BuffID.Obstructed:     // attacked by a Brain Suckler
-                    case BuffID.Suffocation:    // in contact with silt/sand/slush
-                    case BuffID.Burning:        // in contact with hot blocks
-                    case BuffID.WaterCandle:    // around a water candle
-                        break;
-                    default:
-                        if(Main.debuff[i]) {
-                            Player.ClearBuff(i);
-                        }
-                        break;
+                // do not remove buffs
+                if(!Main.debuff[i]) {
+                    continue;
                 }
+
+                // do not clear any buffs that nurse cannot remove, except
+                // certain ones (otherwise environmental buffs are cleared,
+                // like banners and campfire)
+                if(BuffID.Sets.NurseCannotRemoveDebuff[i]) {
+                    switch(i) {
+                        case BuffID.PotionSickness:
+                        case BuffID.NeutralHunger:
+                        case BuffID.Hunger:
+                        case BuffID.Starving:
+                            Player.ClearBuff(i);
+                            break;
+                        default:
+                            continue;
+                    }
+                }
+
+                // clear all other debuffs
+                Player.ClearBuff(i);
             }
         }
     }
