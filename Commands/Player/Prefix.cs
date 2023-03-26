@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -22,7 +23,8 @@ namespace CheatCommands.Commands.Player {
             int id = -1;
 
             if(!CommandUtils.GetPrefixType(prefix, out id, out string properName) 
-                || !caller.Player.HeldItem.Prefix(id)) { 
+                || (!Main.mouseItem.Prefix(id)
+                && !caller.Player.HeldItem.Prefix(id))) { 
                 return new CommandReply(
                     Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_Invalid"),
                     Color.Red);
