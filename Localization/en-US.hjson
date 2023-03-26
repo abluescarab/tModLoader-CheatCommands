@@ -89,6 +89,11 @@
 
             MultiCommand_Description: Run a multicommand.
             MultiCommand_NotConfigured: Multicommand not configured.
+
+            Event_Description: Start or stop an event.
+            Event_Unknown: Unknown event.
+            Event_Start: "{0} started."
+            Event_Stop: Events stopped.
         }
 
         Config: {
@@ -112,6 +117,7 @@
             Teleport_Label: Teleport to a coordinate or player (/tp)
 
             WorldCommands_Header: World commands
+            Event_Label: Start or stop an event (/event)
             FreezeTime_Label: Freeze world time (/freeze)
             SetSpawn_Label: Set world spawn (/setspawn)
             SettleLiquids_Label: Settle all liquids (/settle)

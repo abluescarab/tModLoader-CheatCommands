@@ -74,6 +74,10 @@ namespace CheatCommands {
 
         [Header("$Mods.CheatCommands.Config.WorldCommands_Header")]
         [DefaultValue(true)]
+        [Label("$Mods.CheatCommands.Config.Event_Label")]
+        public bool EventEnabled;
+
+        [DefaultValue(true)]
         [Label("$Mods.CheatCommands.Config.FreezeTime_Label")]
         public bool FreezeTimeEnabled;
 
