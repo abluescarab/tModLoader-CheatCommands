@@ -37,7 +37,7 @@ namespace CheatCommands.Commands.Player {
                 CommandUtils.GetPrefixType(args[2], out prefixId);
             }
 
-            Item item = new Item(itemType, prefix: prefixId);
+            Item item = new(itemType, prefix: prefixId);
             int maxStack = item.maxStack;
             int adjustedAmount = amount;
 
@@ -45,7 +45,7 @@ namespace CheatCommands.Commands.Player {
                 int spawnAmount = (adjustedAmount > maxStack ? maxStack : adjustedAmount);
 
                 if(prefixId > 0) {
-                    caller.Player.QuickSpawnClonedItem(caller.Player.GetSource_Loot(), item, spawnAmount);
+                    caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), item, spawnAmount);
                 }
                 else {
                     caller.Player.QuickSpawnItem(caller.Player.GetSource_Loot(), itemType, spawnAmount);

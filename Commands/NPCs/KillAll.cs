@@ -24,7 +24,7 @@ namespace CheatCommands.Commands.NPCs {
                     if(killType.Equals("friendly") && !CommandUtils.IsFriendlyNPC(npc)) continue;
                     if(killType.Equals("hostile") && CommandUtils.IsFriendlyNPC(npc)) continue;
 
-                    npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
+                    npc.SimpleStrikeNPC(npc.lifeMax, -npc.direction, true, noPlayerInteraction: true);
                     NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
                     amount++;
                 }

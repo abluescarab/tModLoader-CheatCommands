@@ -15,10 +15,9 @@ namespace CheatCommands.Commands.NPCs {
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
-            int npcType = 0;
             int amount = 0;
 
-            if(!int.TryParse(args[0], out npcType)) {
+            if(!int.TryParse(args[0], out int npcType)) {
                 npcType = CommandUtils.GetNPCType(args[0]);
             }
 
@@ -34,7 +33,7 @@ namespace CheatCommands.Commands.NPCs {
                 NPC npc = Main.npc[i];
 
                 if(CommandUtils.IsValidNPC(npc) && (npc.type == npcType || npc.TypeName.Equals(args[0]))) {
-                    npc.StrikeNPCNoInteraction(npc.lifeMax, 0, -npc.direction, crit: true);
+                    npc.SimpleStrikeNPC(npc.lifeMax, -npc.direction, true, noPlayerInteraction: true);
                     NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, npc.lifeMax, 0f, -npc.direction, 1);
                     amount++;
                 }
