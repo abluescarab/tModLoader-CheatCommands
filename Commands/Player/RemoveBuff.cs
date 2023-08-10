@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.Player {
     class RemoveBuff : CheatCommand {
         public override string Command => "removebuff";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.RemoveBuff_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.RemoveBuff.Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().DebuffEnabled;
@@ -22,7 +22,7 @@ namespace CheatCommands.Commands.Player {
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Buff_Unknown",
+                        "Mods.CheatCommands.Commands.Buff.Unknown",
                         buffType),
                     Color.Red);
             }
@@ -30,7 +30,7 @@ namespace CheatCommands.Commands.Player {
             caller.Player.ClearBuff(buffType);
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.RemoveBuff_Success",
+                    "Mods.CheatCommands.Commands.RemoveBuff.Success",
                     buffType));
         }
     }

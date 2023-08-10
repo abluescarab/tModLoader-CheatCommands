@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.Player {
     class GiveCoins : CheatCommand {
         public override string Command => "coins";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveCoins_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveCoins.Description");
         public override string Usage => base.Usage + " <platinum> <gold> <silver> <copper>";
         public override int MinimumArguments => 4;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GiveCoinsEnabled;
@@ -64,7 +64,7 @@ namespace CheatCommands.Commands.Player {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.GiveCoins_Success",
+                    "Mods.CheatCommands.Commands.GiveCoins.Success",
                     Join(", ", new List<string>() {
                         (platinum > 0 ? platinum + " platinum" : ""),
                         (gold > 0 ? gold + " gold" : ""),

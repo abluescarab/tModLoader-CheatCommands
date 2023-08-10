@@ -9,7 +9,7 @@ namespace CheatCommands.Commands.World {
     class Time : CheatCommand {
         public override string Command => "time";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Time_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Time.Description");
         public override string Usage => base.Usage + " <dawn/dusk/noon/midnight/time>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.World;
@@ -50,7 +50,7 @@ namespace CheatCommands.Commands.World {
 
                 NetMessage.SendData(MessageID.WorldData);
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.Time_Success",
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Time.Success",
                         caller.Player.name,
                         args[0]));
             }

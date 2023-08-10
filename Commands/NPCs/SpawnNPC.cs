@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.NPCs {
     class SpawnNPC : CheatCommand {
         public override string Command => "spawn";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Spawn_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Spawn.Description");
         public override string Usage => base.Usage + " <type/name> [x] [y] [amount]";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.World;
@@ -30,7 +30,7 @@ namespace CheatCommands.Commands.NPCs {
             if(npcType == 0 || npcType >= NPCLoader.NPCCount) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        "Mods.CheatCommands.Commands.Spawn.Unknown",
                         npcType),
                     Color.Red);
             }
@@ -38,7 +38,7 @@ namespace CheatCommands.Commands.NPCs {
             if(!CommandUtils.IsValidNPC(npcType)) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        "Mods.CheatCommands.Commands.Spawn.Unknown",
                         npcType),
                     Color.Red);
             }
@@ -98,7 +98,7 @@ namespace CheatCommands.Commands.NPCs {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Spawn_Success",
+                    "Mods.CheatCommands.Commands.Spawn.Success",
                     caller.Player.name,
                     amount));
         }

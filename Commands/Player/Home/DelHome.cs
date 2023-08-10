@@ -6,7 +6,7 @@ namespace CheatCommands.Commands.Player.Home {
     public class DelHome : CheatCommand {
         public override string Command => "delhome";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.DelHome_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.DelHome.Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
@@ -20,13 +20,13 @@ namespace CheatCommands.Commands.Player.Home {
                 player.Homes.Remove(name);
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.DelHome_Remove",
+                        "Mods.CheatCommands.Commands.DelHome.Remove",
                         name));
             }
             else {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Home_DoesNotExist",
+                        "Mods.CheatCommands.Commands.Home.DoesNotExist",
                         name),
                     Color.Red);
             }

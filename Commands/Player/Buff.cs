@@ -9,7 +9,7 @@ namespace CheatCommands.Commands.Player {
 
         public override string Command => "buff";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Buff_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Buff.Description");
         public override string Usage => base.Usage + " <type/name> [seconds]";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().BuffEnabled;
@@ -25,7 +25,7 @@ namespace CheatCommands.Commands.Player {
             if(buffType == 0 || buffType >= BuffLoader.BuffCount) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Buff_Unknown",
+                        "Mods.CheatCommands.Commands.Buff.Unknown",
                         buffType),
                     Color.Red);
             }
@@ -39,7 +39,7 @@ namespace CheatCommands.Commands.Player {
             caller.Player.AddBuff(buffType, length * TICKS_PER_SECOND);
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Buff_Success",
+                    "Mods.CheatCommands.Commands.Buff.Success",
                     buffType));
         }
     }

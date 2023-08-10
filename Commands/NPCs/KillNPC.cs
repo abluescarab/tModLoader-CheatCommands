@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.NPCs {
     class KillNPC : CheatCommand {
         public override string Command => "kill";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Kill_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Kill.Description");
         public override string Usage => base.Usage + " <type/name>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.World;
@@ -24,7 +24,7 @@ namespace CheatCommands.Commands.NPCs {
             if(!CommandUtils.IsValidNPC(npcType)) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Spawn_Unknown",
+                        "Mods.CheatCommands.Commands.Spawn.Unknown",
                         npcType),
                     Color.Red);
             }
@@ -41,7 +41,7 @@ namespace CheatCommands.Commands.NPCs {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Kill_Success",
+                    "Mods.CheatCommands.Commands.Kill.Success",
                     caller.Player.name,
                     amount));
         }

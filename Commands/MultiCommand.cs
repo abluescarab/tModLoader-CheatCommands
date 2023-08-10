@@ -15,7 +15,7 @@ namespace CheatCommands.Commands {
     public class MultiCommand : CheatCommand {
         public override string Command => "mc";
         public override string Description 
-            => Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand.Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.Chat;
@@ -29,7 +29,7 @@ namespace CheatCommands.Commands {
 
             if(def == null || def.Commands.Count == 0) {
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand_NotConfigured"), 
+                    Language.GetTextValue("Mods.CheatCommands.Commands.MultiCommand.NotConfigured"), 
                     Color.Red);
             }
 

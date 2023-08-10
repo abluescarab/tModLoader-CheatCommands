@@ -6,14 +6,14 @@ namespace CheatCommands.Commands.Player {
     class Respawn : CheatCommand {
         public override string Command => "respawn";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Respawn_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Respawn.Description");
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillMeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
             CheatCommandsPlayer player = caller.Player.GetModPlayer<CheatCommandsPlayer>();
             PlayerDeathReason reason = new PlayerDeathReason() {
                 SourceCustomReason = Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Respawn_DeathReason",
+                    "Mods.CheatCommands.Commands.Respawn.DeathReason",
                     caller.Player.name)
             };
 

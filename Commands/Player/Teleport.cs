@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.Player {
     public class Teleport : CheatCommand {
         public override string Command => "tp";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Teleport.Description");
         public override string Usage => base.Usage + " <player>/<x> <y>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().TeleportEnabled;
@@ -23,7 +23,7 @@ namespace CheatCommands.Commands.Player {
 
                 if(playerName == caller.Player.name) {
                     return new CommandReply(
-                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePosition"),
+                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport.SamePosition"),
                         Color.Red);
                 }
 
@@ -32,7 +32,7 @@ namespace CheatCommands.Commands.Player {
                 if(otherPlayer == -1) {
                     return new CommandReply(
                         Language.GetTextValue(
-                            "Mods.CheatCommands.Commands.Teleport_PlayerNotFound",
+                            "Mods.CheatCommands.Commands.Teleport.PlayerNotFound",
                             playerName),
                         Color.Red);
                 }
@@ -60,7 +60,7 @@ namespace CheatCommands.Commands.Player {
                 if(x == caller.Player.position.X
                     && y == caller.Player.position.Y) {
                     return new CommandReply(
-                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport_SamePosition"), 
+                        Language.GetTextValue("Mods.CheatCommands.Commands.Teleport.SamePosition"), 
                         Color.Red);
                 }
             }
@@ -68,7 +68,7 @@ namespace CheatCommands.Commands.Player {
             caller.Player.Teleport(new Vector2(x, y));
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Teleport_Success",
+                    "Mods.CheatCommands.Commands.Teleport.Success",
                     x,
                     y));
         }

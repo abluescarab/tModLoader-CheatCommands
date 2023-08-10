@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.NPCs {
     class KillAll : CheatCommand {
         public override string Command => "killall";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.KillAll_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.KillAll.Description");
         public override string Usage => base.Usage + " [friendly/hostile]";
         public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().KillAllEnabled;
@@ -32,7 +32,7 @@ namespace CheatCommands.Commands.NPCs {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Kill_Success",
+                    "Mods.CheatCommands.Commands.Kill.Success",
                     caller.Player.name,
                     amount));
         }

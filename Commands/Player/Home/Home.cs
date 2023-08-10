@@ -6,7 +6,7 @@ namespace CheatCommands.Commands.Player.Home {
     public class Home : CheatCommand {
         public override string Command => "home";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Home_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Home.Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
@@ -19,7 +19,7 @@ namespace CheatCommands.Commands.Player.Home {
             if(home == null) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Home_DoesNotExist",
+                        "Mods.CheatCommands.Commands.Home.DoesNotExist",
                         name), 
                     Color.Red);
             }
@@ -27,7 +27,7 @@ namespace CheatCommands.Commands.Player.Home {
             caller.Player.Teleport(home.Position);
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.Home_Success", 
+                    "Mods.CheatCommands.Commands.Home.Success", 
                     name));
         }
     }

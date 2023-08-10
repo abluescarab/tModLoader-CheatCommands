@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.World {
     class SettleLiquids : CheatCommand {
         public override string Command => Language.GetTextValue("CLI.Settle_Command");
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.SettleLiquids_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.SettleLiquids.Description");
         public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SettleLiquidsEnabled;
 

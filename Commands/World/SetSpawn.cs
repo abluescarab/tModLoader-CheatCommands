@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.World {
     class SetSpawn : CheatCommand {
         public override string Command => "setspawn";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn.Description");
         public override CommandType Type => CommandType.World;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().SetSpawnEnabled;
 
@@ -22,7 +22,7 @@ namespace CheatCommands.Commands.World {
 
             NetMessage.SendData(MessageID.WorldData);
             return new CommandReply(
-                Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn_Success",
+                Language.GetTextValue("Mods.CheatCommands.Commands.SetSpawn.Success",
                 caller.Player.name,
                 x,
                 y));

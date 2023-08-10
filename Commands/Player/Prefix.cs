@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.Player {
     public class Prefix : CheatCommand {
         public override string Command => "prefix";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Prefix.Description");
         public override string Usage => base.Usage + " <name>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().PrefixEnabled;
@@ -15,7 +15,7 @@ namespace CheatCommands.Commands.Player {
         public override CommandReply Action(CommandCaller caller, string[] args) {
             if(caller.Player.HeldItem.IsAir) {
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_NoItem"),
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Prefix.NoItem"),
                     Color.Red);
             }
 
@@ -26,12 +26,12 @@ namespace CheatCommands.Commands.Player {
                 || (!Main.mouseItem.Prefix(id)
                 && !caller.Player.HeldItem.Prefix(id))) { 
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_Invalid"),
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Prefix.Invalid"),
                     Color.Red);
             }
 
             return new CommandReply(
-                Language.GetTextValue("Mods.CheatCommands.Commands.Prefix_Success",
+                Language.GetTextValue("Mods.CheatCommands.Commands.Prefix.Success",
                 caller.Player.HeldItem.Name,
                 properName));
         }

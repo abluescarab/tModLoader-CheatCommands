@@ -6,7 +6,7 @@ namespace CheatCommands.Commands.Player.Home {
     public class SetHome : CheatCommand {
         public override string Command => "sethome";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.SetHome_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.SetHome.Description");
         public override string Usage => base.Usage + " <name> [<x> <y>]";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
@@ -42,14 +42,14 @@ namespace CheatCommands.Commands.Player.Home {
 
             if(player.Homes.Has(name)) {
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.SetHome_Exists"),
+                    Language.GetTextValue("Mods.CheatCommands.Commands.SetHome.Exists"),
                     Color.Red);
             }
 
             player.Homes.Add(name, pos);
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.SetHome_Success",
+                    "Mods.CheatCommands.Commands.SetHome.Success",
                     name,
                     pos.X,
                     pos.Y));

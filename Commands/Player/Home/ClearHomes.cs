@@ -6,7 +6,7 @@ namespace CheatCommands.Commands.Player.Home {
     internal class ClearHomes : CheatCommand {
         public override string Command => "clearhomes";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.ClearHomes_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.ClearHomes.Description");
         public override string Usage => base.Usage + " <world/all>";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
@@ -33,7 +33,7 @@ namespace CheatCommands.Commands.Player.Home {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.ClearHomes_Success",
+                    "Mods.CheatCommands.Commands.ClearHomes.Success",
                     cleared));
         }
     }

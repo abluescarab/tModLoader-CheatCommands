@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.Player {
 
         public override string Command => "god";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.GodMode_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GodMode.Description");
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GodModeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
@@ -22,7 +22,7 @@ namespace CheatCommands.Commands.Player {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.GodMode_" + (
+                    "Mods.CheatCommands.Commands.GodMode." + (
                     Enabled
                     ? "Enable"
                     : "Disable")));

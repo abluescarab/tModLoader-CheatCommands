@@ -8,7 +8,7 @@ namespace CheatCommands.Commands.Player.Home {
     public class Homes : CheatCommand {
         public override string Command => "homes";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Homes_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Homes.Description");
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().HomeEnabled;
 
         public override CommandReply Action(CommandCaller caller, string[] args) {
@@ -18,12 +18,12 @@ namespace CheatCommands.Commands.Player.Home {
             if(homes.Count() > 0) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.Homes_Current",
+                        "Mods.CheatCommands.Commands.Homes.Current",
                         string.Join(", ", homes)));
             }
             else {
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.Homes_None"));
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Homes.None"));
             }
         }
     }

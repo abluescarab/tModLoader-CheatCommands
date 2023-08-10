@@ -17,16 +17,22 @@ namespace CheatCommands {
             Homes.LoadData(tag);
         }
 
+        public override void PostHurt(Player.HurtInfo info) {
+            if(GodMode.Enabled) {
+                Player.QuickHeal();
+            }
+        }
+
         public override void ModifyHurt(ref Player.HurtModifiers modifiers) {
             if(GodMode.Enabled) {
-                modifiers.FinalDamage *= 0.0f;
+                modifiers.DisableDust();
+                modifiers.DisableSound();
+                modifiers.SetMaxDamage(0); // set to 0 in case the 1 minimum changes
             }
 
             if(Knockback.Enabled) {
                 modifiers.HitDirectionOverride = 0;
             }
-
-            base.ModifyHurt(ref modifiers);
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {

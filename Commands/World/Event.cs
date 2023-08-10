@@ -37,7 +37,7 @@ namespace CheatCommands.Commands.World {
 
         public override string Command => "event";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.Event_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.Event.Description");
         public override string Usage => base.Usage + " <stop/name>\n" + GetOptions();
         public override int MinimumArguments => 1;
         public override CommandType Type => CommandType.World;
@@ -54,7 +54,7 @@ namespace CheatCommands.Commands.World {
                 Main.eclipse = false;
                 StopInvasion();
 
-                return new CommandReply(Language.GetTextValue("Mods.CheatCommands.Commands.Event_Stop"));
+                return new CommandReply(Language.GetTextValue("Mods.CheatCommands.Commands.Event.Stop"));
             }
 
             // below code modified from Terraria source
@@ -130,11 +130,11 @@ namespace CheatCommands.Commands.World {
 
             if(string.IsNullOrEmpty(name)) {
                 return new CommandReply(
-                    Language.GetTextValue("Mods.CheatCommands.Commands.Event_Unknown"), Color.Red);
+                    Language.GetTextValue("Mods.CheatCommands.Commands.Event.Unknown"), Color.Red);
             }
 
             return new CommandReply(
-                Language.GetTextValue("Mods.CheatCommands.Commands.Event_Start", name));
+                Language.GetTextValue("Mods.CheatCommands.Commands.Event.Start", name));
         }
 
         private void StopInvasion() {

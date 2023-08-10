@@ -7,7 +7,7 @@ namespace CheatCommands.Commands.Player {
     class GiveItem : CheatCommand {
         public override string Command => "give";
         public override string Description
-            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveItem_Description");
+            => Language.GetTextValue("Mods.CheatCommands.Commands.GiveItem.Description");
         public override string Usage => base.Usage + " <type/name> [amount] [prefix]";
         public override int MinimumArguments => 1;
         public override bool CommandEnabled => ModContent.GetInstance<CheatCommandsConfig>().GiveItemEnabled;
@@ -23,7 +23,7 @@ namespace CheatCommands.Commands.Player {
             if(itemType == 0 || itemType >= ItemLoader.ItemCount) {
                 return new CommandReply(
                     Language.GetTextValue(
-                        "Mods.CheatCommands.Commands.GiveItem_Unknown", 
+                        "Mods.CheatCommands.Commands.GiveItem.Unknown", 
                         itemType), 
                     Color.Red);
             }
@@ -56,7 +56,7 @@ namespace CheatCommands.Commands.Player {
 
             return new CommandReply(
                 Language.GetTextValue(
-                    "Mods.CheatCommands.Commands.GiveItem_Success",
+                    "Mods.CheatCommands.Commands.GiveItem.Success",
                     amount,
                     itemType));
         }
