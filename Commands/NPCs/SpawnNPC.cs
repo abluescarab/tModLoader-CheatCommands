@@ -49,7 +49,7 @@ namespace CheatCommands.Commands.NPCs {
                     args[1] = args[1].Remove(0, 1);
                 }
 
-                if(!int.TryParse(args[1], out x)) {
+                if(!int.TryParse(args[1], out y)) {
                     xRelative = true;
                 }
             }
